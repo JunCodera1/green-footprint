@@ -5,7 +5,6 @@ import {
   BarChart3,
   Users,
   ArrowRight,
-  CheckCircle,
   Star,
   Menu,
   X,
