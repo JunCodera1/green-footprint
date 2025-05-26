@@ -14,6 +14,24 @@ import {
   Moon,
 } from "lucide-react";
 
+interface Feature {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+interface Testimonial {
+  name: string;
+  role: string;
+  content: string;
+  rating: number;
+}
+
+interface Stat {
+  number: string;
+  label: string;
+}
+
 const GreenFootprintLanding: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [scrollY, setScrollY] = useState<number>(0);
@@ -33,17 +51,15 @@ const GreenFootprintLanding: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Load dark mode preference from memory
+  // Use in-memory storage instead of localStorage for Claude.ai compatibility
   useEffect(() => {
-    const savedTheme = localStorage.getItem("darkMode");
-    if (savedTheme) {
-      setIsDarkMode(JSON.parse(savedTheme));
-    }
+    // Dark mode preference would be loaded from memory or API in a real app
+    // For demo purposes, we'll just use the state
   }, []);
 
-  // Save dark mode preference and apply to document
   useEffect(() => {
-    localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
+    // In a real app, this would save to a backend or other storage
+    // For demo purposes, just apply the theme
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
     } else {
@@ -51,11 +67,11 @@ const GreenFootprintLanding: React.FC = () => {
     }
   }, [isDarkMode]);
 
-  const toggleDarkMode = () => {
+  const toggleDarkMode = (): void => {
     setIsDarkMode(!isDarkMode);
   };
 
-  const features = [
+  const features: Feature[] = [
     {
       icon: <BarChart3 className="w-8 h-8" />,
       title: "Carbon Tracking",
@@ -82,7 +98,7 @@ const GreenFootprintLanding: React.FC = () => {
     },
   ];
 
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
       name: "Sarah Johnson",
       role: "Environmental Activist",
@@ -106,12 +122,23 @@ const GreenFootprintLanding: React.FC = () => {
     },
   ];
 
-  const stats = [
+  const stats: Stat[] = [
     { number: "50K+", label: "Active Users" },
     { number: "2M+", label: "Tons CO2 Reduced" },
     { number: "98%", label: "Customer Satisfaction" },
     { number: "150+", label: "Countries Served" },
   ];
+
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ): void => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div
@@ -143,6 +170,7 @@ const GreenFootprintLanding: React.FC = () => {
             <div className="hidden md:flex items-center space-x-8">
               <a
                 href="#features"
+                onClick={(e) => handleLinkClick(e, "#features")}
                 className={`transition-colors ${
                   isDarkMode
                     ? "text-gray-300 hover:text-emerald-400"
@@ -153,6 +181,7 @@ const GreenFootprintLanding: React.FC = () => {
               </a>
               <a
                 href="#about"
+                onClick={(e) => handleLinkClick(e, "#about")}
                 className={`transition-colors ${
                   isDarkMode
                     ? "text-gray-300 hover:text-emerald-400"
@@ -163,6 +192,7 @@ const GreenFootprintLanding: React.FC = () => {
               </a>
               <a
                 href="#testimonials"
+                onClick={(e) => handleLinkClick(e, "#testimonials")}
                 className={`transition-colors ${
                   isDarkMode
                     ? "text-gray-300 hover:text-emerald-400"
@@ -219,6 +249,7 @@ const GreenFootprintLanding: React.FC = () => {
             <div className="px-4 py-4 space-y-4">
               <a
                 href="#features"
+                onClick={(e) => handleLinkClick(e, "#features")}
                 className={`block transition-colors ${
                   isDarkMode
                     ? "text-gray-300 hover:text-emerald-400"
@@ -229,6 +260,7 @@ const GreenFootprintLanding: React.FC = () => {
               </a>
               <a
                 href="#about"
+                onClick={(e) => handleLinkClick(e, "#about")}
                 className={`block transition-colors ${
                   isDarkMode
                     ? "text-gray-300 hover:text-emerald-400"
@@ -239,6 +271,7 @@ const GreenFootprintLanding: React.FC = () => {
               </a>
               <a
                 href="#testimonials"
+                onClick={(e) => handleLinkClick(e, "#testimonials")}
                 className={`block transition-colors ${
                   isDarkMode
                     ? "text-gray-300 hover:text-emerald-400"
