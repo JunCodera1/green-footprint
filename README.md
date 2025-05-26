@@ -1,54 +1,45 @@
-# React + TypeScript + Vite
+# 🌱 Green Footprint
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Green Footprint** is a web application that helps you **calculate your personal carbon footprint** based on your daily habits, and provides personalized **recommendations to live more sustainably** and reduce your environmental impact.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ✅ Calculate your carbon footprint based on:
+  - Transportation (motorbike, car, public transport, etc.)
+  - Energy consumption (electricity, gas, etc.)
+  - Diet (meat, vegetarian, frequency, etc.)
+  - Shopping & lifestyle choices
+- 📊 Visualize results using interactive charts (bar, pie, etc.)
+- 🎯 Get actionable tips to reduce your CO₂ emissions
+- 🧠 Learn about sustainable living through bite-sized knowledge
+- 🔒 (Optional) Sign in to save and track your progress over time
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🧑‍💻 Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- [React](https://reactjs.org/) + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Router](https://reactrouter.com/)
+- [Chart.js](https://www.chartjs.org/) or [Recharts](https://recharts.org/)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 🛠️ Getting Started
+
+```bash
+# Clone the project
+git clone https://github.com/JunCodera1/green-footprint.git
+cd green-footprint
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# App will be running at:
+http://localhost:5173
