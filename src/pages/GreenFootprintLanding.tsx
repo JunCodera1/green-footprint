@@ -65,6 +65,7 @@ const GreenFootprintLanding: React.FC = () => {
         "Set and track sustainable goals with detailed reporting and comprehensive analytics",
     },
   ];
+
   const testimonials: Testimonial[] = [
     {
       name: "Sarah Johnson",
@@ -131,7 +132,7 @@ const GreenFootprintLanding: React.FC = () => {
         currentTestimonial={currentTestimonial}
         setCurrentTestimonial={setCurrentTestimonial}
       />
-      <CTASection />
+      <CTASection isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
     </div>
   );
