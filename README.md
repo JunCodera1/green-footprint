@@ -37,7 +37,7 @@ cd green-footprint
 
 # Install dependencies
 npm install
-
+npm install react-router-dom
 # Run development server
 npm run dev
 
