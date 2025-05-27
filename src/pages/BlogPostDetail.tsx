@@ -1,5 +1,5 @@
 import React from "react";
-import { Calendar, User, Tag, Share2, Facebook, Twitter } from "lucide-react";
+import { Calendar, Tag, Share2, Facebook, Twitter } from "lucide-react";
 
 // Mock data for a single blog post
 const blogPost = {
@@ -16,7 +16,7 @@ const blogPost = {
   imageUrl: "/images/reduce-carbon.jpg",
   category: "Tips & Tricks",
   date: "March 15, 2024",
-  author: "John Doe", 
+  author: "John Doe",
   authorImage: "/images/authors/author1.jpg",
   readTime: "5 min read",
 };

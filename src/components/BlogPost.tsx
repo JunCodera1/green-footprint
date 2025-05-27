@@ -1,5 +1,5 @@
 import React from "react";
-import { Calendar, Tag } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 interface BlogPostProps {
   title: string;
@@ -9,6 +9,7 @@ interface BlogPostProps {
   date: string;
   author: string;
   authorImage: string;
+  additionalInfo?: React.ReactNode; // <- Add this line
 }
 
 const BlogPost: React.FC<BlogPostProps> = ({
