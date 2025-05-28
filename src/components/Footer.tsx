@@ -44,7 +44,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="/api" className="hover:text-white transition-colors">
                   API
                 </a>
               </li>
@@ -86,7 +86,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="documentation" className="hover:text-white transition-colors">
                   Documentation
                 </a>
               </li>

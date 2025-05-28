@@ -858,10 +858,14 @@ const CarbonFootprintCalculator: React.FC = () => {
               <div
                 className={`p-6 rounded-2xl border-2 ${steps[0].borderColor} ${steps[0].bgColor}`}
               >
-                <label className="block text-lg font-semibold text-gray-700 mb-4">
+                <label
+                  htmlFor="carType"
+                  className="block text-lg font-semibold text-gray-700 mb-4"
+                >
                   Car Type
                 </label>
                 <select
+                  id="carType"
                   value={formData.carType}
                   onChange={(e) => handleInputChange("carType", e.target.value)}
                   className="w-full p-4 border-2 border-gray-200 rounded-xl text-lg focus:border-blue-500 focus:outline-none transition-colors"
@@ -964,10 +968,11 @@ const CarbonFootprintCalculator: React.FC = () => {
               <div
                 className={`p-6 rounded-2xl border-2 ${steps[1].borderColor} ${steps[1].bgColor}`}
               >
-                <label className="block text-lg font-semibold text-gray-700 mb-4">
+                <label htmlFor="heating" className="block text-lg font-semibold text-gray-700 mb-4">
                   Primary Heating Source
                 </label>
                 <select
+                  id="heating"
                   value={formData.heating}
                   onChange={(e) => handleInputChange("heating", e.target.value)}
                   className="w-full p-4 border-2 border-gray-200 rounded-xl text-lg focus:border-blue-500 focus:outline-none transition-colors"
@@ -982,21 +987,21 @@ const CarbonFootprintCalculator: React.FC = () => {
               <div
                 className={`p-6 rounded-2xl border-2 ${steps[1].borderColor} ${steps[1].bgColor}`}
               >
-                <label className="block text-lg font-semibold text-gray-700 mb-4">
-                  Home Size
-                </label>
-                <select
-                  value={formData.homeSize}
-                  onChange={(e) =>
-                    handleInputChange("homeSize", e.target.value)
-                  }
-                  className="w-full p-4 border-2 border-gray-200 rounded-xl text-lg focus:border-blue-500 focus:outline-none transition-colors"
-                >
-                  <option value="small">Small (&lt;1,500 sq ft)</option>
-                  <option value="medium">Medium (1,500-2,500 sq ft)</option>
-                  <option value="large">Large (&gt;2,500 sq ft)</option>
-                </select>
-              </div>
+            <label htmlFor="homeSize" className="block text-lg font-semibold text-gray-700 mb-4">
+              Home Size
+            </label>
+            <select
+              id="homeSize"
+              name="homeSize"
+              value={formData.homeSize}
+              onChange={(e) => handleInputChange("homeSize", e.target.value)}
+              className="w-full p-4 border-2 border-gray-200 rounded-xl text-lg focus:border-blue-500 focus:outline-none transition-colors"
+            >
+              <option value="small">Small (&lt;1,500 sq ft)</option>
+              <option value="medium">Medium (1,500-2,500 sq ft)</option>
+              <option value="large">Large (&gt;2,500 sq ft)</option>
+            </select>
+            </div>
             </div>
           </div>
         )}

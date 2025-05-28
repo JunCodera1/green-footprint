@@ -38,6 +38,7 @@ cd green-footprint
 # Install dependencies
 npm install
 npm install react-router-dom
+npm install react-simple-maps --legacy-peer-deps
 # Run development server
 npm run dev
 
