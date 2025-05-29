@@ -5,20 +5,22 @@ import Blog from "./pages/Blog";
 import Community from "./pages/Community";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CarbonFootprintCalculator from "./pages/CarbonFootprintCalculator";
+import { DarkModeProvider } from "./contexts/DarkModeContext";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<GreenFootprintLanding />} />
-        <Route
-          path="/carbon-footprint-calculator"
-          element={<CarbonFootprintCalculator />}
-        />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/community" element={<Community />} />
-        
-      </Routes>
-    </BrowserRouter>
+    <DarkModeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<GreenFootprintLanding />} />
+          <Route
+            path="/carbon-footprint-calculator"
+            element={<CarbonFootprintCalculator />}
+          />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/community" element={<Community />} />
+        </Routes>
+      </BrowserRouter>
+    </DarkModeProvider>
   </StrictMode>
 );

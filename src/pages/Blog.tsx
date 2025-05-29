@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogPost from "../components/BlogPost";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import { Link } from "react-router-dom";
 import { Search, Leaf, Recycle, CloudRain, Sun } from "lucide-react";
+import { useDarkMode } from "../contexts/DarkModeContext";
 
 // Category data with matching icons
 const categories = [
@@ -79,6 +80,17 @@ const blogPosts = [
 const Blog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 4;
+  const [scrollY, setScrollY] = useState<number>(0);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Filter posts based on search and category
   const filteredPosts = blogPosts.filter((post) => {
@@ -90,22 +102,36 @@ const Blog: React.FC = () => {
     return matchesSearch && matchesCategory;
   });
 
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ): void => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(filteredPosts.length / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   return (
     <div className="min-h-screen bg-green-50 dark:bg-green-900">
       {/* Thanh điều hướng */}
       <Navigation
-        scrollY={0}
-        isMenuOpen={false}
-        setIsMenuOpen={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        isDarkMode={false}
-        toggleDarkMode={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        handleLinkClick={function (): void {
-          throw new Error("Function not implemented.");
-        }}
+        scrollY={scrollY}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
+        handleLinkClick={handleLinkClick}
       />
 
       {/* Hero Section with nature-inspired gradient */}
@@ -206,10 +232,10 @@ const Blog: React.FC = () => {
 
           {/* Articles Grid */}
           <div className="lg:col-span-3">
-            {filteredPosts.length > 0 ? (
+            {currentPosts.length > 0 ? (
               <>
                 <div className="grid md:grid-cols-2 gap-6">
-                  {filteredPosts.map((post) => (
+                  {currentPosts.map((post) => (
                     <BlogPost
                       key={post.id}
                       {...post}
@@ -228,19 +254,32 @@ const Blog: React.FC = () => {
                 {/* Earth-friendly pagination */}
                 <div className="mt-8 flex justify-center">
                   <nav className="flex items-center space-x-2">
-                    <button className="px-4 py-2 border border-green-200 rounded-lg hover:bg-green-50 dark:border-green-600 dark:hover:bg-green-800/50 transition-colors">
+                    <button
+                      className="px-4 py-2 border border-green-200 rounded-lg hover:bg-green-50 dark:border-green-600 dark:hover:bg-green-800/50 transition-colors"
+                      disabled={currentPage === 1}
+                      onClick={() => setCurrentPage((prev) => prev - 1)}
+                    >
                       Previous
                     </button>
-                    <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-                      1
-                    </button>
-                    <button className="px-4 py-2 border border-green-200 rounded-lg hover:bg-green-50 dark:border-green-600 dark:hover:bg-green-800/50 transition-colors">
-                      2
-                    </button>
-                    <button className="px-4 py-2 border border-green-200 rounded-lg hover:bg-green-50 dark:border-green-600 dark:hover:bg-green-800/50 transition-colors">
-                      3
-                    </button>
-                    <button className="px-4 py-2 border border-green-200 rounded-lg hover:bg-green-50 dark:border-green-600 dark:hover:bg-green-800/50 transition-colors">
+                    {pageNumbers.map((number) => (
+                      <button
+                        key={number}
+                        onClick={() => setCurrentPage(number)}
+                        className={`px-4 py-2 rounded-lg ${
+                          number === currentPage
+                            ? "bg-green-600 text-white"
+                            : "border hover:bg-green-100"
+                        }`}
+                      >
+                        {number}
+                      </button>
+                    ))}
+
+                    <button
+                      className="px-4 py-2 border border-green-200 rounded-lg hover:bg-green-50 dark:border-green-600 dark:hover:bg-green-800/50 transition-colors"
+                      onClick={() => setCurrentPage((prev) => prev + 1)}
+                      disabled={currentPage === pageNumbers.length}
+                    >
                       Next
                     </button>
                   </nav>
@@ -271,7 +310,7 @@ const Blog: React.FC = () => {
       </div>
 
       {/* Eco Pledge Footer */}
-      <Footer isDarkMode={false} />
+      <Footer isDarkMode={isDarkMode} />
     </div>
   );
 };
