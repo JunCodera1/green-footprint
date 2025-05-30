@@ -1,5 +1,6 @@
 import React from "react";
-import { Leaf, Menu, X, Sun, Moon } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Leaf, Menu, X, Sun, Moon, LogIn, UserPlus } from "lucide-react";
 
 interface NavigationProps {
   scrollY: number;
@@ -21,6 +22,13 @@ const Navigation: React.FC<NavigationProps> = ({
   toggleDarkMode,
   handleLinkClick,
 }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const isAuthPage = ["/login", "/signup", "/forgot-password"].includes(
+    location.pathname
+  );
+
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -41,39 +49,43 @@ const Navigation: React.FC<NavigationProps> = ({
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            <a
-              href="#features"
-              onClick={(e) => handleLinkClick(e, "#features")}
-              className={`transition-colors ${
-                isDarkMode
-                  ? "text-gray-300 hover:text-emerald-400"
-                  : "text-gray-700 hover:text-emerald-600"
-              }`}
-            >
-              Features
-            </a>
-            <a
-              href="#about"
-              onClick={(e) => handleLinkClick(e, "#about")}
-              className={`transition-colors ${
-                isDarkMode
-                  ? "text-gray-300 hover:text-emerald-400"
-                  : "text-gray-700 hover:text-emerald-600"
-              }`}
-            >
-              About
-            </a>
-            <a
-              href="#testimonials"
-              onClick={(e) => handleLinkClick(e, "#testimonials")}
-              className={`transition-colors ${
-                isDarkMode
-                  ? "text-gray-300 hover:text-emerald-400"
-                  : "text-gray-700 hover:text-emerald-600"
-              }`}
-            >
-              Reviews
-            </a>
+            {!isAuthPage && (
+              <>
+                <a
+                  href="#features"
+                  onClick={(e) => handleLinkClick(e, "#features")}
+                  className={`transition-colors ${
+                    isDarkMode
+                      ? "text-gray-300 hover:text-emerald-400"
+                      : "text-gray-700 hover:text-emerald-600"
+                  }`}
+                >
+                  Features
+                </a>
+                <a
+                  href="#about"
+                  onClick={(e) => handleLinkClick(e, "#about")}
+                  className={`transition-colors ${
+                    isDarkMode
+                      ? "text-gray-300 hover:text-emerald-400"
+                      : "text-gray-700 hover:text-emerald-600"
+                  }`}
+                >
+                  About
+                </a>
+                <a
+                  href="#testimonials"
+                  onClick={(e) => handleLinkClick(e, "#testimonials")}
+                  className={`transition-colors ${
+                    isDarkMode
+                      ? "text-gray-300 hover:text-emerald-400"
+                      : "text-gray-700 hover:text-emerald-600"
+                  }`}
+                >
+                  Reviews
+                </a>
+              </>
+            )}
 
             <button
               onClick={toggleDarkMode}
@@ -91,9 +103,30 @@ const Navigation: React.FC<NavigationProps> = ({
               )}
             </button>
 
-            <button className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-              Get Started
-            </button>
+            {!isAuthPage && (
+              <div className="flex items-center space-x-4">
+                <button
+                  onClick={() => navigate("/login")}
+                  className="inline-flex items-center px-4 py-2 border border-emerald-600 text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-lg transition-colors duration-300"
+                >
+                  <LogIn className="w-4 h-4 mr-2" />
+                  Sign In
+                </button>
+                <button
+                  onClick={() => navigate("/signup")}
+                  className="inline-flex items-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors duration-300"
+                >
+                  <UserPlus className="w-4 h-4 mr-2" />
+                  Sign Up
+                </button>
+                <button
+                  onClick={() => navigate("/carbon-footprint-calculator")}
+                  className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                >
+                  Get Started
+                </button>
+              </div>
+            )}
           </div>
 
           <button
@@ -101,6 +134,7 @@ const Navigation: React.FC<NavigationProps> = ({
               isDarkMode ? "text-white" : "text-gray-900"
             }`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? (
               <X className="w-6 h-6" />
@@ -118,39 +152,43 @@ const Navigation: React.FC<NavigationProps> = ({
           }`}
         >
           <div className="px-4 py-4 space-y-4">
-            <a
-              href="#features"
-              onClick={(e) => handleLinkClick(e, "#features")}
-              className={`block transition-colors ${
-                isDarkMode
-                  ? "text-gray-300 hover:text-emerald-400"
-                  : "text-gray-700 hover:text-emerald-600"
-              }`}
-            >
-              Features
-            </a>
-            <a
-              href="#about"
-              onClick={(e) => handleLinkClick(e, "#about")}
-              className={`block transition-colors ${
-                isDarkMode
-                  ? "text-gray-300 hover:text-emerald-400"
-                  : "text-gray-700 hover:text-emerald-600"
-              }`}
-            >
-              About
-            </a>
-            <a
-              href="#testimonials"
-              onClick={(e) => handleLinkClick(e, "#testimonials")}
-              className={`block transition-colors ${
-                isDarkMode
-                  ? "text-gray-300 hover:text-emerald-400"
-                  : "text-gray-700 hover:text-emerald-600"
-              }`}
-            >
-              Reviews
-            </a>
+            {!isAuthPage && (
+              <>
+                <a
+                  href="#features"
+                  onClick={(e) => handleLinkClick(e, "#features")}
+                  className={`block transition-colors ${
+                    isDarkMode
+                      ? "text-gray-300 hover:text-emerald-400"
+                      : "text-gray-700 hover:text-emerald-600"
+                  }`}
+                >
+                  Features
+                </a>
+                <a
+                  href="#about"
+                  onClick={(e) => handleLinkClick(e, "#about")}
+                  className={`block transition-colors ${
+                    isDarkMode
+                      ? "text-gray-300 hover:text-emerald-400"
+                      : "text-gray-700 hover:text-emerald-600"
+                  }`}
+                >
+                  About
+                </a>
+                <a
+                  href="#testimonials"
+                  onClick={(e) => handleLinkClick(e, "#testimonials")}
+                  className={`block transition-colors ${
+                    isDarkMode
+                      ? "text-gray-300 hover:text-emerald-400"
+                      : "text-gray-700 hover:text-emerald-600"
+                  }`}
+                >
+                  Reviews
+                </a>
+              </>
+            )}
 
             <div className="flex items-center justify-between">
               <span className={isDarkMode ? "text-gray-300" : "text-gray-700"}>
@@ -172,9 +210,30 @@ const Navigation: React.FC<NavigationProps> = ({
               </button>
             </div>
 
-            <button className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-2 rounded-full">
-              Get Started
-            </button>
+            {!isAuthPage && (
+              <div className="space-y-2">
+                <button
+                  onClick={() => navigate("/login")}
+                  className="w-full flex items-center justify-center px-4 py-2 border border-emerald-600 text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-lg transition-colors duration-300"
+                >
+                  <LogIn className="w-4 h-4 mr-2" />
+                  Sign In
+                </button>
+                <button
+                  onClick={() => navigate("/signup")}
+                  className="w-full flex items-center justify-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors duration-300"
+                >
+                  <UserPlus className="w-4 h-4 mr-2" />
+                  Sign Up
+                </button>
+                <button
+                  onClick={() => {}}
+                  className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                >
+                  Get Started
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

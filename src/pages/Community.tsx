@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
+import NewDiscussionModal from "../components/NewDiscussionModal";
 import {
   Users,
   Trophy,
@@ -86,6 +87,17 @@ const Community: React.FC = () => {
   const [activeTab, setActiveTab] = useState("forum");
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNewDiscussionOpen, setIsNewDiscussionOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleDarkMode = (): void => {
     setIsDarkMode(!isDarkMode);
@@ -110,10 +122,32 @@ const Community: React.FC = () => {
     }
   };
 
+  const handleNewDiscussion = (discussion: {
+    title: string;
+    content: string;
+    category: string;
+  }) => {
+    // Add to forum discussions (mock implementation)
+    const newDiscussion = {
+      id: forumDiscussions.length + 1,
+      title: discussion.title,
+      author: "Current User",
+      replies: 0,
+      likes: 0,
+      category: discussion.category,
+      timeAgo: "Just now",
+    };
+
+    forumDiscussions.unshift(newDiscussion);
+    setIsNewDiscussionOpen(false);
+  };
+
   return (
-    <div className={`min-h-screen ${isDarkMode ? "bg-gray-900" : "bg-gray-50"}`}>
+    <div
+      className={`min-h-screen ${isDarkMode ? "bg-gray-900" : "bg-gray-50"}`}
+    >
       <Navigation
-        scrollY={0}
+        scrollY={scrollY}
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
         isDarkMode={isDarkMode}
@@ -122,7 +156,13 @@ const Community: React.FC = () => {
       />
 
       {/* Hero Section */}
-      <div className={`bg-gradient-to-r ${isDarkMode ? "from-green-700 to-teal-900" : "from-green-300 to-teal-600"} text-white py-16`}>
+      <div
+        className={`bg-gradient-to-r ${
+          isDarkMode
+            ? "from-green-700 to-teal-900"
+            : "from-green-300 to-teal-600"
+        } text-white py-16`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold mb-4">Green Community</h1>
           <p className="text-xl text-green-100 max-w-3xl mx-auto">
@@ -184,10 +224,20 @@ const Community: React.FC = () => {
               <h2 className="text-2xl font-bold dark:text-white">
                 Recent Discussions
               </h2>
-              <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+              <button
+                onClick={() => setIsNewDiscussionOpen(true)}
+                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+              >
                 New Discussion
               </button>
             </div>
+
+            <NewDiscussionModal
+              isOpen={isNewDiscussionOpen}
+              onClose={() => setIsNewDiscussionOpen(false)}
+              onSubmit={handleNewDiscussion}
+              isDarkMode={isDarkMode}
+            />
 
             <div className="grid gap-6">
               {forumDiscussions.map((discussion) => (
