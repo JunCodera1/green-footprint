@@ -72,12 +72,14 @@ const EcoScene3D: React.FC<EcoScene3DProps> = ({
       const tree = gltf.scene;
       tree.scale.set(0.5, 0.5, 0.5);
       tree.position.set(0, 0, 0);
-      tree.traverse((child) => {
-        if (child instanceof THREE.Mesh) {
-          child.castShadow = true;
-          child.receiveShadow = true;
+      tree.traverse(
+        (child: { castShadow: boolean; receiveShadow: boolean }) => {
+          if (child instanceof THREE.Mesh) {
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
         }
-      });
+      );
       scene.add(tree);
     });
 
@@ -87,12 +89,14 @@ const EcoScene3D: React.FC<EcoScene3DProps> = ({
       solarPanel.scale.set(0.3, 0.3, 0.3);
       solarPanel.position.set(2, 0, -1);
       solarPanel.rotation.y = Math.PI / 4;
-      solarPanel.traverse((child) => {
-        if (child instanceof THREE.Mesh) {
-          child.castShadow = true;
-          child.receiveShadow = true;
+      solarPanel.traverse(
+        (child: { castShadow: boolean; receiveShadow: boolean }) => {
+          if (child instanceof THREE.Mesh) {
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
         }
-      });
+      );
       scene.add(solarPanel);
     });
 
@@ -101,12 +105,14 @@ const EcoScene3D: React.FC<EcoScene3DProps> = ({
       const windTurbine = gltf.scene;
       windTurbine.scale.set(0.4, 0.4, 0.4);
       windTurbine.position.set(-2, 0, -2);
-      windTurbine.traverse((child) => {
-        if (child instanceof THREE.Mesh) {
-          child.castShadow = true;
-          child.receiveShadow = true;
+      windTurbine.traverse(
+        (child: { castShadow: boolean; receiveShadow: boolean }) => {
+          if (child instanceof THREE.Mesh) {
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
         }
-      });
+      );
       scene.add(windTurbine);
     });
 
