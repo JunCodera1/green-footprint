@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
+import NewDiscussionModal from "../components/NewDiscussionModal";
 import {
   Users,
   Trophy,
@@ -84,25 +85,84 @@ const forumDiscussions = [
 
 const Community: React.FC = () => {
   const [activeTab, setActiveTab] = useState("forum");
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNewDiscussionOpen, setIsNewDiscussionOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const toggleDarkMode = (): void => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ): void => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleNewDiscussion = (discussion: {
+    title: string;
+    content: string;
+    category: string;
+  }) => {
+    // Add to forum discussions (mock implementation)
+    const newDiscussion = {
+      id: forumDiscussions.length + 1,
+      title: discussion.title,
+      author: "Current User",
+      replies: 0,
+      likes: 0,
+      category: discussion.category,
+      timeAgo: "Just now",
+    };
+
+    forumDiscussions.unshift(newDiscussion);
+    setIsNewDiscussionOpen(false);
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div
+      className={`min-h-screen ${isDarkMode ? "bg-gray-900" : "bg-gray-50"}`}
+    >
       <Navigation
-        scrollY={0}
-        isMenuOpen={false}
-        setIsMenuOpen={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        isDarkMode={false}
-        toggleDarkMode={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        handleLinkClick={function (): void {
-          throw new Error("Function not implemented.");
-        }}
+        scrollY={scrollY}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
+        handleLinkClick={handleLinkClick}
       />
+
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-green-300 to-teal-600 text-white py-16">
+      <div
+        className={`bg-gradient-to-r ${
+          isDarkMode
+            ? "from-green-700 to-teal-900"
+            : "from-green-300 to-teal-600"
+        } text-white py-16`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold mb-4">Green Community</h1>
           <p className="text-xl text-green-100 max-w-3xl mx-auto">
@@ -164,16 +224,26 @@ const Community: React.FC = () => {
               <h2 className="text-2xl font-bold dark:text-white">
                 Recent Discussions
               </h2>
-              <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+              <button
+                onClick={() => setIsNewDiscussionOpen(true)}
+                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+              >
                 New Discussion
               </button>
             </div>
+
+            <NewDiscussionModal
+              isOpen={isNewDiscussionOpen}
+              onClose={() => setIsNewDiscussionOpen(false)}
+              onSubmit={handleNewDiscussion}
+              isDarkMode={isDarkMode}
+            />
 
             <div className="grid gap-6">
               {forumDiscussions.map((discussion) => (
                 <div
                   key={discussion.id}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6"
+                  className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
                 >
                   <div className="flex justify-between items-start">
                     <div>
@@ -215,7 +285,7 @@ const Community: React.FC = () => {
               {activeChallenges.map((challenge) => (
                 <div
                   key={challenge.id}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden"
+                  className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
                 >
                   <img
                     src={challenge.image}
@@ -266,9 +336,9 @@ const Community: React.FC = () => {
                   }`}
                 >
                   <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">
+                    <div className="flex-shrink-0 relative">
                       {index === 0 && (
-                        <div className="absolute ml-8 -mt-4">
+                        <div className="absolute -top-2 -right-2">
                           <Trophy className="w-6 h-6 text-yellow-500" />
                         </div>
                       )}
@@ -319,7 +389,7 @@ const Community: React.FC = () => {
           </div>
         )}
       </div>
-      <Footer isDarkMode={false} />
+      <Footer isDarkMode={isDarkMode} />
     </div>
   );
 };
