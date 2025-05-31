@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BlogPost from "../components/BlogPost";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import { Link } from "react-router-dom";
 import { Search, Leaf, Recycle, CloudRain, Sun } from "lucide-react";
+import { useDarkMode } from "../contexts/DarkModeContext";
 
 // Category data with matching icons
 const categories = [
@@ -79,35 +80,17 @@ const blogPosts = [
 const Blog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 4;
+  const [scrollY, setScrollY] = useState<number>(0);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
-
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   // Filter posts based on search and category
   const filteredPosts = blogPosts.filter((post) => {
@@ -118,6 +101,26 @@ const Blog: React.FC = () => {
       !selectedCategory || post.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ): void => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(filteredPosts.length / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? "bg-green-900" : "bg-green-50"}`}>
@@ -249,10 +252,10 @@ const Blog: React.FC = () => {
 
           {/* Articles Grid */}
           <div className="lg:col-span-3">
-            {filteredPosts.length > 0 ? (
+            {currentPosts.length > 0 ? (
               <>
                 <div className="grid md:grid-cols-2 gap-6">
-                  {filteredPosts.map((post) => (
+                  {currentPosts.map((post) => (
                     <BlogPost
                       key={post.id}
                       {...post}
@@ -274,22 +277,34 @@ const Blog: React.FC = () => {
                 {/* Pagination */}
                 <div className="mt-8 flex justify-center">
                   <nav className="flex items-center space-x-2">
-                    {[1, 2, 3].map((page) => (
+                    <button
+                      className="px-4 py-2 border border-green-200 rounded-lg hover:bg-green-50 dark:border-green-600 dark:hover:bg-green-800/50 transition-colors"
+                      disabled={currentPage === 1}
+                      onClick={() => setCurrentPage((prev) => prev - 1)}
+                    >
+                      Previous
+                    </button>
+                    {pageNumbers.map((number) => (
                       <button
-                        key={page}
-                        className={`px-4 py-2 rounded-lg transition-colors ${
-                          page === 1
-                            ? "bg-green-600 text-white hover:bg-green-700"
-                            : `border ${
-                                isDarkMode
-                                  ? "border-green-600 hover:bg-green-800/50"
-                                  : "border-green-200 hover:bg-green-50"
-                              }`
+                        key={number}
+                        onClick={() => setCurrentPage(number)}
+                        className={`px-4 py-2 rounded-lg ${
+                          number === currentPage
+                            ? "bg-green-600 text-white"
+                            : "border hover:bg-green-100"
                         }`}
                       >
-                        {page}
+                        {number}
                       </button>
                     ))}
+
+                    <button
+                      className="px-4 py-2 border border-green-200 rounded-lg hover:bg-green-50 dark:border-green-600 dark:hover:bg-green-800/50 transition-colors"
+                      onClick={() => setCurrentPage((prev) => prev + 1)}
+                      disabled={currentPage === pageNumbers.length}
+                    >
+                      Next
+                    </button>
                   </nav>
                 </div>
               </>
@@ -324,7 +339,6 @@ const Blog: React.FC = () => {
           </div>
         </div>
       </div>
-
       {/* Footer */}
       <Footer isDarkMode={isDarkMode} />
     </div>

@@ -8,13 +8,13 @@ import FeaturesSection from "../components/FeaturesSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
+import { useDarkMode } from "../contexts/DarkModeContext";
 
 const GreenFootprintLanding: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [scrollY, setScrollY] = useState<number>(0);
   const [currentTestimonial, setCurrentTestimonial] = useState<number>(0);
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
@@ -27,18 +27,6 @@ const GreenFootprintLanding: React.FC = () => {
     }, 4000);
     return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
-
-  const toggleDarkMode = (): void => {
-    setIsDarkMode(!isDarkMode);
-  };
   const features: Feature[] = [
     {
       icon: <BarChart3 className="w-8 h-8" />,
