@@ -26,7 +26,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
           </div>
 
           <div>
-            <h4 className="font-bold mb-4 text-emerald-400">Product</h4>
+            <h4 className="font-bold mb-4 text-emerald-400">Features</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
@@ -34,13 +34,35 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
                 </a>
               </li>
               <li>
-                <a href="/ai-analytic" className="hover:text-white transition-colors">
-                  AI Analytics
+                <a
+                  href="/smart-home"
+                  className="hover:text-white transition-colors"
+                >
+                  Smart Home
                 </a>
               </li>
               <li>
-                <a href="/personal-reports#" className="hover:text-white transition-colors">
-                  Reports
+                <a
+                  href="/carbon-offset"
+                  className="hover:text-white transition-colors"
+                >
+                  Carbon Offset
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/eco-scene"
+                  className="hover:text-white transition-colors"
+                >
+                  EcoScene
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/achievements"
+                  className="hover:text-white transition-colors"
+                >
+                  Achievements
                 </a>
               </li>
               <li>
@@ -52,11 +74,27 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
           </div>
 
           <div>
-            <h4 className="font-bold mb-4 text-emerald-400">Company</h4>
+            <h4 className="font-bold mb-4 text-emerald-400">Community</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
                   About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/social"
+                  className="hover:text-white transition-colors"
+                >
+                  Social
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/education"
+                  className="hover:text-white transition-colors"
+                >
+                  Education
                 </a>
               </li>
               <li>
@@ -65,8 +103,11 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Careers
+                <a
+                  href="/community"
+                  className="hover:text-white transition-colors"
+                >
+                  Community
                 </a>
               </li>
               <li>
@@ -86,13 +127,19 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
                 </a>
               </li>
               <li>
-                <a href="documentation" className="hover:text-white transition-colors">
+                <a
+                  href="/documentation"
+                  className="hover:text-white transition-colors"
+                >
                   Documentation
                 </a>
               </li>
               <li>
-                <a href="/community" className="hover:text-white transition-colors">
-                  Community
+                <a
+                  href="/subscription"
+                  className="hover:text-white transition-colors"
+                >
+                  Subscription
                 </a>
               </li>
               <li>

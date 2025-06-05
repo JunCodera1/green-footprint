@@ -1,4 +1,4 @@
-export interface CarbonOffset {
+export interface CarbonOffsetProject {
   id: string;
   name: string;
   description: string;

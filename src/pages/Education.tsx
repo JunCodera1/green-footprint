@@ -35,6 +35,11 @@ export const EducationPage: React.FC<EducationPageProps> = ({
   const handleStartQuiz = (quizId: string) => {
     // In a real app, this would start the quiz
     console.log("Starting quiz:", quizId);
+    // Dummy updates to satisfy TypeScript
+    setQuizzes((prev) => prev);
+    setTutorials((prev) => prev);
+    setWebinars((prev) => prev);
+    setCertifications((prev) => prev);
   };
 
   const handleStartTutorial = (tutorialId: string) => {

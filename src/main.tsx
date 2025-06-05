@@ -14,6 +14,14 @@ import CarbonFootprintCalculator from "./pages/CarbonFootprintCalculator";
 import APIDocumentation from "./pages/APIDocumentation";
 
 import { DarkModeProvider } from "./contexts/DarkModeContext";
+import MobileAppPreview from "./pages/MobileAppPreview";
+import EcoScene3D from "./pages/EcoScene3D";
+import { SmartHome } from "./pages/SmartHome";
+import { CarbonOffset } from "./pages/CarbonOffset";
+import { SocialPage } from "./pages/Social";
+import { Achievements } from "./pages/Achievements";
+import { Subscription } from "./pages/Subscription";
+import { EducationPage } from "./pages/Education";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -31,6 +39,16 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/personal-reports" element={<PersonalReports />} />
           <Route path="/ai-analytic" element={<AIAnalytic />} />
+          <Route path="/app-preview" element={<MobileAppPreview />} />
+          <Route path="/eco-scene" element={<EcoScene3D />} />
+          <Route path="/smart-home" element={<SmartHome />} />
+          <Route path="/carbon-offset" element={<CarbonOffset />} />
+          <Route path="/social" element={<SocialPage />} />
+          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/subscription" element={<Subscription />} />
+          <Route path="/education" element={<EducationPage />} />
+
+
         </Routes>
       </BrowserRouter>
     </DarkModeProvider>

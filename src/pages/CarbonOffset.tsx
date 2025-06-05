@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import type { CarbonOffset, OffsetPortfolio } from "../types/offset";
+import type { CarbonOffsetProject, OffsetPortfolio } from "../types/offset";
 import { OffsetProjectCard } from "../components/offset/OffsetProjectCard";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
@@ -7,7 +7,7 @@ import { useDarkMode } from "../contexts/DarkModeContext";
 import { TreePine, Zap, Globe2, Filter } from "lucide-react";
 
 // Mock data
-const mockProjects: CarbonOffset[] = [
+const mockProjects: CarbonOffsetProject[] = [
   {
     id: "1",
     name: "Amazon Rainforest Conservation",
@@ -94,7 +94,7 @@ export const CarbonOffset: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handlePurchase = (project: CarbonOffset) => {
+  const handlePurchase = (project: CarbonOffsetProject) => {
     console.log("Purchasing credits from:", project);
   };
 

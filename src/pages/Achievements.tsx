@@ -76,13 +76,14 @@ const mockProgress: UserProgress = {
   longestStreak: 14,
 };
 
+type AchievementCategory = "all" | "reduction" | "lifestyle" | "community";
+
 export const Achievements: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleDarkMode } = useDarkMode();
-  const [selectedCategory, setSelectedCategory] = useState<
-    "all" | "reduction" | "lifestyle" | "community"
-  >("all");
+  const [selectedCategory, setSelectedCategory] =
+    useState<AchievementCategory>("all");
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -288,7 +289,9 @@ export const Achievements: React.FC = () => {
                   (category) => (
                     <button
                       key={category}
-                      onClick={() => setSelectedCategory(category as any)}
+                      onClick={() =>
+                        setSelectedCategory(category as AchievementCategory)
+                      }
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                         selectedCategory === category
                           ? isDarkMode

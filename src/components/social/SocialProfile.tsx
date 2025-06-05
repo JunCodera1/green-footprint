@@ -4,7 +4,7 @@ import {
   Users,
   Award,
   Leaf,
-  Tree,
+  Trees,
   Trophy,
   Share2,
   MessageCircle,
@@ -156,7 +156,7 @@ export const SocialProfileCard: React.FC<SocialProfileProps> = ({
             }`}
           >
             <div className="flex items-center mb-1">
-              <Tree className="w-4 h-4 text-green-600 mr-1" />
+              <Trees className="w-4 h-4 text-green-600 mr-1" />
               <span
                 className={`text-sm ${
                   isDarkMode ? "text-gray-400" : "text-gray-600"
