@@ -22,6 +22,7 @@ import { SocialPage } from "./pages/Social";
 import { Achievements } from "./pages/Achievements";
 import { Subscription } from "./pages/Subscription";
 import { EducationPage } from "./pages/Education";
+import CarbonTracking from "./pages/CarbonTracking";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -47,6 +48,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/education" element={<EducationPage />} />
+          <Route path="/carbon-tracking" element={<CarbonTracking />} />
 
 
         </Routes>

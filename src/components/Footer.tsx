@@ -29,7 +29,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
             <h4 className="font-bold mb-4 text-emerald-400">Features</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="/carbon-tracking" className="hover:text-white transition-colors">
                   Carbon Tracking
                 </a>
               </li>
