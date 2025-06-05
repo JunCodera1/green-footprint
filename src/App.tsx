@@ -27,6 +27,7 @@ const SignUpPage = React.lazy(() => import("./pages/SignUpPage"));
 const LoginPage = React.lazy(() => import("./pages/LoginPage"));
 const ForgotPassword = React.lazy(() => import("./pages/ForgotPassword"));
 const APIDocumentation = React.lazy(() => import("./pages/APIDocumentation"));
+const About = React.lazy(() => import("./pages/AboutUs"));
 
 const PageRoutes = () => {
   const location = useLocation();
@@ -190,6 +191,22 @@ const PageRoutes = () => {
             >
               <PageTransition>
                 <APIDocumentation />
+              </PageTransition>
+            </Suspense>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <Suspense
+              fallback={
+                <PageTransition isLoading>
+                  <div />
+                </PageTransition>
+              }
+            >
+              <PageTransition>
+                <About />
               </PageTransition>
             </Suspense>
           }

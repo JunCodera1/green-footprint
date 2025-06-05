@@ -23,14 +23,17 @@ import { Achievements } from "./pages/Achievements";
 import { Subscription } from "./pages/Subscription";
 import { EducationPage } from "./pages/Education";
 import CarbonTracking from "./pages/CarbonTracking";
-
+import AboutUs from "./pages/AboutUs";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <DarkModeProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<GreenFootprintLanding />} />
-          <Route path="/carbon-footprint-calculator" element={<CarbonFootprintCalculator />} />
+          <Route
+            path="/carbon-footprint-calculator"
+            element={<CarbonFootprintCalculator />}
+          />
           <Route path="/blog" element={<Blog />} />
           <Route path="/community" element={<Community />} />
           <Route path="/api" element={<APIDocumentation />} />
@@ -49,8 +52,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/education" element={<EducationPage />} />
           <Route path="/carbon-tracking" element={<CarbonTracking />} />
-
-
+          <Route path="/about-us" element={<AboutUs />} />
         </Routes>
       </BrowserRouter>
     </DarkModeProvider>
