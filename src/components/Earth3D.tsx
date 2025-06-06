@@ -30,7 +30,7 @@ const Earth3D: React.FC<Earth3DProps> = ({ size = 400, autoRotate = true }) => {
     const earthMap = textureLoader.load("/textures/earth_daymap.jpg");
     const bumpMap = textureLoader.load("/textures/earth_bumpmap.jpg");
     const specularMap = textureLoader.load("/textures/earth_specular.jpg");
-    const cloudsMap = textureLoader.load("/textures/earth_clouds.png");
+    const cloudsMap = textureLoader.load("/textures/earth_clouds.jpg");
 
     // Earth material
     const material = new THREE.MeshPhongMaterial({

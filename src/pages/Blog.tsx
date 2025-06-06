@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BlogPost from "../components/BlogPost";
-import Footer from "../components/Footer";
-import Navigation from "../components/Navigation";
+import Footer from "../components/mainCompo/Footer";
+import Navigation from "../components/mainCompo/Navigation";
 import { Link } from "react-router-dom";
 import { Search, Leaf, Recycle, CloudRain, Sun } from "lucide-react";
 import { useDarkMode } from "../contexts/DarkModeContext";
@@ -123,7 +123,11 @@ const Blog: React.FC = () => {
   }
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? "bg-green-900" : "bg-green-50"}`}>
+    <div
+      className={`min-h-screen transition-colors duration-300 ${
+        isDarkMode ? "bg-green-900" : "bg-green-50"
+      }`}
+    >
       {/* Navigation */}
       <Navigation
         scrollY={scrollY}
@@ -135,7 +139,11 @@ const Blog: React.FC = () => {
       />
 
       {/* Hero Section */}
-      <div className={`bg-gradient-to-r from-green-300 to-teal-600 text-white py-16 shadow-lg ${isDarkMode ? "dark:from-green-700 dark:to-teal-800" : ""}`}>
+      <div
+        className={`bg-gradient-to-r from-green-300 to-teal-600 text-white py-16 shadow-lg ${
+          isDarkMode ? "dark:from-green-700 dark:to-teal-800" : ""
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-4">
             <Leaf className="w-10 h-10" />
@@ -163,11 +171,13 @@ const Blog: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className={`rounded-lg shadow-lg p-6 border transition-colors duration-300 ${
-              isDarkMode 
-                ? "bg-green-800 border-green-700" 
-                : "bg-white border-green-100"
-            }`}>
+            <div
+              className={`rounded-lg shadow-lg p-6 border transition-colors duration-300 ${
+                isDarkMode
+                  ? "bg-green-800 border-green-700"
+                  : "bg-white border-green-100"
+              }`}
+            >
               {/* Search */}
               <div className="mb-6">
                 <div className="relative">
@@ -188,9 +198,11 @@ const Blog: React.FC = () => {
 
               {/* Categories */}
               <div>
-                <h3 className={`font-bold text-lg mb-4 flex items-center ${
-                  isDarkMode ? "text-green-100" : "text-green-800"
-                }`}>
+                <h3
+                  className={`font-bold text-lg mb-4 flex items-center ${
+                    isDarkMode ? "text-green-100" : "text-green-800"
+                  }`}
+                >
                   <Leaf className="w-5 h-5 mr-2" /> Eco Categories
                 </h3>
                 <ul className="space-y-2">
@@ -203,20 +215,24 @@ const Blog: React.FC = () => {
                               ? "bg-green-700 text-green-200"
                               : "bg-green-100 text-green-700"
                             : isDarkMode
-                              ? "hover:bg-green-700/50"
-                              : "hover:bg-green-50"
+                            ? "hover:bg-green-700/50"
+                            : "hover:bg-green-50"
                         }`}
                         onClick={() =>
                           setSelectedCategory(
-                            selectedCategory === category.name ? "" : category.name
+                            selectedCategory === category.name
+                              ? ""
+                              : category.name
                           )
                         }
                       >
                         {category.icon}
                         <span>{category.name}</span>
-                        <span className={`ml-auto text-sm ${
-                          isDarkMode ? "text-green-300" : "text-green-600"
-                        }`}>
+                        <span
+                          className={`ml-auto text-sm ${
+                            isDarkMode ? "text-green-300" : "text-green-600"
+                          }`}
+                        >
                           ({category.count})
                         </span>
                       </button>
@@ -226,19 +242,25 @@ const Blog: React.FC = () => {
               </div>
 
               {/* CTA */}
-              <div className={`mt-8 p-4 rounded-lg border transition-colors duration-300 ${
-                isDarkMode
-                  ? "bg-green-700 border-green-600"
-                  : "bg-green-50 border-green-100"
-              }`}>
-                <h4 className={`font-medium mb-2 ${
-                  isDarkMode ? "text-green-100" : "text-green-800"
-                }`}>
+              <div
+                className={`mt-8 p-4 rounded-lg border transition-colors duration-300 ${
+                  isDarkMode
+                    ? "bg-green-700 border-green-600"
+                    : "bg-green-50 border-green-100"
+                }`}
+              >
+                <h4
+                  className={`font-medium mb-2 ${
+                    isDarkMode ? "text-green-100" : "text-green-800"
+                  }`}
+                >
                   Calculate Your Footprint
                 </h4>
-                <p className={`text-sm mb-3 ${
-                  isDarkMode ? "text-green-200" : "text-green-600"
-                }`}>
+                <p
+                  className={`text-sm mb-3 ${
+                    isDarkMode ? "text-green-200" : "text-green-600"
+                  }`}
+                >
                   Discover how your lifestyle impacts the planet.
                 </p>
                 <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg text-sm transition-colors">
@@ -262,9 +284,11 @@ const Blog: React.FC = () => {
                       isDarkMode={isDarkMode}
                       additionalInfo={
                         post.footprintReduction && (
-                          <span className={`inline-flex items-center text-sm ${
-                            isDarkMode ? "text-green-300" : "text-green-600"
-                          }`}>
+                          <span
+                            className={`inline-flex items-center text-sm ${
+                              isDarkMode ? "text-green-300" : "text-green-600"
+                            }`}
+                          >
                             <Leaf className="w-3 h-3 mr-1" /> Saves{" "}
                             {post.footprintReduction}
                           </span>
@@ -311,14 +335,18 @@ const Blog: React.FC = () => {
             ) : (
               <div className="text-center py-12">
                 <Leaf className="mx-auto w-12 h-12 text-green-400 mb-4" />
-                <h3 className={`text-lg font-medium ${
-                  isDarkMode ? "text-green-100" : "text-green-800"
-                }`}>
+                <h3
+                  className={`text-lg font-medium ${
+                    isDarkMode ? "text-green-100" : "text-green-800"
+                  }`}
+                >
                   No articles found
                 </h3>
-                <p className={`mt-2 ${
-                  isDarkMode ? "text-green-300" : "text-green-600"
-                }`}>
+                <p
+                  className={`mt-2 ${
+                    isDarkMode ? "text-green-300" : "text-green-600"
+                  }`}
+                >
                   Try adjusting your search or filter criteria
                 </p>
                 <button

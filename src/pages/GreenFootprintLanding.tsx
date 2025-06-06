@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BarChart3, Users, TreePine, Recycle } from "lucide-react";
 import type { Feature, Stat, Testimonial } from "../types";
-import Navigation from "../components/Navigation";
-import HeroSection from "../components/HeroSection";
+import Navigation from "../components/mainCompo/Navigation";
+import HeroSection from "../components/mainCompo/HeroSection";
 import StatsSection from "../components/StatsSection";
 import FeaturesSection from "../components/FeaturesSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import CTASection from "../components/CTASection";
-import Footer from "../components/Footer";
+import Footer from "../components/mainCompo/Footer";
 import { useDarkMode } from "../contexts/DarkModeContext";
 
 const GreenFootprintLanding: React.FC = () => {
