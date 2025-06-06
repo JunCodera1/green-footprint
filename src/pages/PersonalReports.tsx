@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Download } from "lucide-react";
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
+import Navigation from "../components/mainCompo/Navigation";
+import Footer from "../components/mainCompo/Footer";
 import ReportCard from "../components/ReportCard";
 import RecommendationsList from "../components/RecommendationsList";
 

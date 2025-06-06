@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Leaf, Mail, AlertCircle, CheckCircle2 } from "lucide-react";
-import AuthNavigation from "../components/AuthNavigation";
+import AuthNavigation from "../../components/AuthNavigation";
 
 const ForgotPassword: React.FC = () => {
   const [email, setEmail] = useState("");

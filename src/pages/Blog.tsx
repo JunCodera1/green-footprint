@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BlogPost from "../components/BlogPost";
-import Footer from "../components/Footer";
-import Navigation from "../components/Navigation";
+import Footer from "../components/mainCompo/Footer";
+import Navigation from "../components/mainCompo/Navigation";
 import { Link } from "react-router-dom";
 import { Search, Leaf, Recycle, CloudRain, Sun } from "lucide-react";
 import { useDarkMode } from "../contexts/DarkModeContext";

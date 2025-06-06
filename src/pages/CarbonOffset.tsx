@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import type { CarbonOffsetProject, OffsetPortfolio } from "../types/offset";
 import { OffsetProjectCard } from "../components/offset/OffsetProjectCard";
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
+import Navigation from "../components/mainCompo/Navigation";
+import Footer from "../components/mainCompo/Footer";
 import { useDarkMode } from "../contexts/DarkModeContext";
 import { TreePine, Zap, Globe2, Filter } from "lucide-react";
 

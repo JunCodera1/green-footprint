@@ -1,6 +1,6 @@
 import React from "react";
 import { Globe, Sun, ArrowRight } from "lucide-react";
-import Button from "./Button";
+import Button from "../Button";
 
 interface HeroSectionProps {
   isDarkMode: boolean;

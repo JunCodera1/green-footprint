@@ -8,8 +8,8 @@ import {
 import { AnimatePresence } from "framer-motion";
 import ThemeProvider from "./components/ThemeProvider";
 import PageTransition from "./components/PageTransition";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
+import Navigation from "./components/mainCompo/Navigation";
+import Footer from "./components/mainCompo/Footer";
 import { useDarkMode } from "./hooks/useDarkMode";
 
 // Lazy load pages
@@ -23,11 +23,14 @@ const Community = React.lazy(() => import("./pages/Community"));
 const Blog = React.lazy(() => import("./pages/Blog"));
 const BlogPostDetail = React.lazy(() => import("./pages/BlogPostDetail"));
 const GlobalStatistics = React.lazy(() => import("./pages/GlobalStatistics"));
-const SignUpPage = React.lazy(() => import("./pages/SignUpPage"));
-const LoginPage = React.lazy(() => import("./pages/LoginPage"));
-const ForgotPassword = React.lazy(() => import("./pages/ForgotPassword"));
+const SignUpPage = React.lazy(() => import("./pages/Security/SignUpPage"));
+const LoginPage = React.lazy(() => import("./pages/Security/LoginPage"));
+const ForgotPassword = React.lazy(
+  () => import("./pages/Security/ForgotPassword")
+);
 const APIDocumentation = React.lazy(() => import("./pages/APIDocumentation"));
 const About = React.lazy(() => import("./pages/AboutUs"));
+const Contact = React.lazy(() => import("./pages/Contact"));
 
 const PageRoutes = () => {
   const location = useLocation();
@@ -207,6 +210,22 @@ const PageRoutes = () => {
             >
               <PageTransition>
                 <About />
+              </PageTransition>
+            </Suspense>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <Suspense
+              fallback={
+                <PageTransition isLoading>
+                  <div />
+                </PageTransition>
+              }
+            >
+              <PageTransition>
+                <Contact />
               </PageTransition>
             </Suspense>
           }

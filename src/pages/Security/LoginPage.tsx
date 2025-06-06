@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Leaf, Mail, Lock, AlertCircle } from "lucide-react";
-import AuthNavigation from "../components/AuthNavigation";
+import AuthNavigation from "../../components/AuthNavigation";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");

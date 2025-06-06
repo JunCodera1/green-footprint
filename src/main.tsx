@@ -5,9 +5,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GreenFootprintLanding from "./pages/GreenFootprintLanding";
 import Blog from "./pages/Blog";
 import Community from "./pages/Community";
-import LoginPage from "./pages/LoginPage";
-import SignUpPage from "./pages/SignUpPage";
-import ForgotPassword from "./pages/ForgotPassword";
+import LoginPage from "./pages/Security/LoginPage";
+import SignUpPage from "./pages/Security/SignUpPage";
+import ForgotPassword from "./pages/Security/ForgotPassword";
 import AIAnalytic from "./pages/AIAnalytic";
 import PersonalReports from "./pages/PersonalReports";
 import CarbonFootprintCalculator from "./pages/CarbonFootprintCalculator";
@@ -24,6 +24,10 @@ import { Subscription } from "./pages/Subscription";
 import { EducationPage } from "./pages/Education";
 import CarbonTracking from "./pages/CarbonTracking";
 import AboutUs from "./pages/AboutUs";
+import Contact from "./pages/Contact";
+import HelpCenter from "./pages/HelpCenter";
+import Privacy from "./pages/Privacy";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <DarkModeProvider>
@@ -53,6 +57,9 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/education" element={<EducationPage />} />
           <Route path="/carbon-tracking" element={<CarbonTracking />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/help-center" element={<HelpCenter />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Routes>
       </BrowserRouter>
     </DarkModeProvider>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Footer from "../components/Footer";
-import Navigation from "../components/Navigation";
+import Footer from "../components/mainCompo/Footer";
+import Navigation from "../components/mainCompo/Navigation";
 import NewDiscussionModal from "../components/NewDiscussionModal";
 import {
   Users,
