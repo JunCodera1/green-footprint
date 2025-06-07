@@ -1,12 +1,7 @@
 import React from "react";
-import type { Challenge } from "../../types/achievement";
+import type { ChallengeCardProps } from "../../types/achievement";
 import { Calendar, Users, TreePine } from "lucide-react";
 
-interface ChallengeCardProps {
-  challenge: Challenge;
-  onJoin: (challengeId: string) => void;
-  isDarkMode?: boolean;
-}
 
 export const ChallengeCard: React.FC<ChallengeCardProps> = ({
   challenge,
