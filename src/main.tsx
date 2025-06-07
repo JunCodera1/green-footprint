@@ -5,7 +5,7 @@ import React, { lazy, Suspense } from "react";
 
 import GreenFootprintLanding from "./pages/Eco/GreenFootprintLanding";
 import Blog from "./pages/Blog/Blog";
-import Community from "./pages/Support/Community";
+import Community from "./pages/Info/Community";
 import AIAnalytic from "./pages/API/AIAnalytic";
 import PersonalReports from "./pages/Support/PersonalReports";
 import CarbonFootprintCalculator from "./pages/Carbon/CarbonFootprintCalculator";
