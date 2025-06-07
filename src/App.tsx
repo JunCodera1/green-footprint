@@ -14,23 +14,23 @@ import { useDarkMode } from "./hooks/useDarkMode";
 
 // Lazy load pages
 const GreenFootprintLanding = React.lazy(
-  () => import("./pages/GreenFootprintLanding")
+  () => import("./pages/Eco/GreenFootprintLanding")
 );
 const CarbonFootprintCalculator = React.lazy(
-  () => import("./pages/CarbonFootprintCalculator")
+  () => import("./pages/Carbon/CarbonFootprintCalculator")
 );
-const Community = React.lazy(() => import("./pages/Community"));
-const Blog = React.lazy(() => import("./pages/Blog"));
-const BlogPostDetail = React.lazy(() => import("./pages/BlogPostDetail"));
-const GlobalStatistics = React.lazy(() => import("./pages/GlobalStatistics"));
-const SignUpPage = React.lazy(() => import("./pages/Security/SignUpPage"));
-const LoginPage = React.lazy(() => import("./pages/Security/LoginPage"));
-const ForgotPassword = React.lazy(
-  () => import("./pages/Security/ForgotPassword")
+const Community = React.lazy(() => import("./pages/Support/Community"));
+const Blog = React.lazy(() => import("./pages/Blog/Blog"));
+const BlogPostDetail = React.lazy(() => import("./pages/Blog/BlogPostDetail"));
+// const GlobalStatistics = React.lazy(() => import("./pages/Info/GlobalStatistics"));
+const SignUpPage = React.lazy(() => import("./pages/Auth/SignUpPage"));
+const LoginPage = React.lazy(() => import("./pages/Auth/LoginPage"));
+const ForgotPassword = React.lazy(() => import("./pages/Auth/ForgotPassword"));
+const APIDocumentation = React.lazy(
+  () => import("./pages/API/APIDocumentation")
 );
-const APIDocumentation = React.lazy(() => import("./pages/APIDocumentation"));
-const About = React.lazy(() => import("./pages/AboutUs"));
-const Contact = React.lazy(() => import("./pages/Contact"));
+const About = React.lazy(() => import("./pages/Info/AboutUs"));
+const Contact = React.lazy(() => import("./pages/Info/Contact"));
 
 const PageRoutes = () => {
   const location = useLocation();
@@ -118,7 +118,7 @@ const PageRoutes = () => {
             </Suspense>
           }
         />
-        <Route
+        {/* <Route
           path="/global-statistics"
           element={
             <Suspense
@@ -133,7 +133,7 @@ const PageRoutes = () => {
               </PageTransition>
             </Suspense>
           }
-        />
+        /> */}
         <Route
           path="/signup"
           element={

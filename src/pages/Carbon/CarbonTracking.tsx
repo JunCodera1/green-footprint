@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Navigation from "../components/mainCompo/Navigation";
-import Footer from "../components/mainCompo/Footer";
-import { useDarkMode } from "../contexts/DarkModeContext";
+import Navigation from "../../components/mainCompo/Navigation";
+import Footer from "../../components/mainCompo/Footer";
+import { useDarkMode } from "../../contexts/DarkModeContext";
 import {
   Car,
   Home,
@@ -24,9 +24,10 @@ import {
   Legend,
   ArcElement,
 } from "chart.js";
-import { AddActivityModal } from "../components/carbonTracking/AddActivityModal";
-import { EditActivityModal } from "../components/carbonTracking/EditActivityModal";
-import { AddGoalModal } from "../components/carbonTracking/AddGoalModal";
+import { AddActivityModal } from "../../components/carbonTracking/AddActivityModal";
+import { EditActivityModal } from "../../components/carbonTracking/EditActivityModal";
+import { AddGoalModal } from "../../components/carbonTracking/AddGoalModal";
+import { Link } from "react-router-dom";
 
 // Register ChartJS components
 ChartJS.register(
@@ -730,10 +731,12 @@ const CarbonTracking: React.FC = () => {
             >
               Support verified carbon offset projects and make a real impact
             </p>
-            <button className="inline-flex items-center px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-200">
-              <ShoppingBag className="w-5 h-5 mr-2" />
-              Visit Carbon Marketplace
-            </button>
+            <Link to="/marketplace">
+              <button className="inline-flex items-center px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-200">
+                <ShoppingBag className="w-5 h-5 mr-2" />
+                Shop Eco-Friendly Products
+              </button>
+            </Link>
           </div>
         </div>
 
