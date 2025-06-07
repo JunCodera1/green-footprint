@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import type { Quiz } from "../../types/education";
 import {
   HelpCircle,
   Clock,
@@ -8,12 +7,7 @@ import {
   CheckCircle,
   XCircle,
 } from "lucide-react";
-
-interface QuizCardProps {
-  quiz: Quiz;
-  onStart: (quizId: string) => void;
-  isDarkMode?: boolean;
-}
+import type { QuizCardProps } from "../../types/education";
 
 export const QuizCard: React.FC<QuizCardProps> = ({
   quiz,
