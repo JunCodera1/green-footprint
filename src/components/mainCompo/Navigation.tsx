@@ -120,18 +120,6 @@ const Navigation: React.FC<NavigationProps> = ({
                   Sign Up
                 </button>
                 <button
-                  onClick={() => navigate("/app-preview")}
-                  className="inline-flex items-center px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  Preview App
-                </button>
-                <button
-                  onClick={() => navigate("/eco-scene")}
-                  className="inline-flex items-center px-6 py-2 bg-gradient-to-r from-orange-500 to-pink-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  EcoScene
-                </button>
-                <button
                   onClick={() => navigate("/carbon-footprint-calculator")}
                   className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                 >
