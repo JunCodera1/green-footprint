@@ -1,34 +1,12 @@
 import React, { useState } from "react";
 import {
   Play,
-  Image as ImageIcon,
   ChevronRight,
   ChevronLeft,
 } from "lucide-react";
+import type { GuideStep, Tutorial, TutorialSectionProps } from "../../types/help";
 
-interface TutorialSectionProps {
-  isDarkMode: boolean;
-}
 
-interface Tutorial {
-  id: string;
-  title: string;
-  duration: string;
-  thumbnail: string;
-  videoUrl: string;
-}
-
-interface GuideStep {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  hotspots: {
-    x: number;
-    y: number;
-    label: string;
-  }[];
-}
 
 const TutorialSection: React.FC<TutorialSectionProps> = ({ isDarkMode }) => {
   const [currentGuideStep, setCurrentGuideStep] = useState(0);
