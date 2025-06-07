@@ -1,17 +1,6 @@
 import React, { useState } from "react";
 import { X, Car, Home, Utensils } from "lucide-react";
-
-interface AddActivityModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onAdd: (activity: {
-    type: "transport" | "energy" | "food";
-    description: string;
-    co2Amount: number;
-    date: Date;
-  }) => void;
-  isDarkMode: boolean;
-}
+import type { AddActivityModalProps } from "../../types/carbonTracking";
 
 const activityTypes = [
   { id: "transport", label: "Transport", icon: <Car className="w-5 h-5" /> },

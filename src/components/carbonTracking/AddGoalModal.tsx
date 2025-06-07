@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { X } from "lucide-react";
-
-interface AddGoalModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onAdd: (goal: { title: string; target: number; deadline: Date }) => void;
-  isDarkMode: boolean;
-}
+import type { AddGoalModalProps } from "../../types/carbonTracking";
 
 export const AddGoalModal: React.FC<AddGoalModalProps> = ({
   isOpen,
