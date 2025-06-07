@@ -1,35 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Send, HelpCircle } from "lucide-react";
-
-interface HelpArticle {
-  id: string;
-  title: string;
-  url: string;
-  keywords: string[];
-}
-
-interface FormField {
-  name: string;
-  label: string;
-  type: "text" | "email" | "textarea" | "select";
-  required?: boolean;
-  options?: string[];
-}
-
-interface SmartContactFormProps {
-  isDarkMode: boolean;
-  topics: string[];
-  helpArticles: HelpArticle[];
-  onSubmit: (formData: {
-    name: string;
-    email: string;
-    topic: string;
-    message: string;
-    company?: string;
-    phone?: string;
-    orderNumber?: string;
-  }) => void;
-}
+import type { FormField, HelpArticle, SmartContactFormProps } from "../../types/contact";
 
 const SmartContactForm: React.FC<SmartContactFormProps> = ({
   isDarkMode,
