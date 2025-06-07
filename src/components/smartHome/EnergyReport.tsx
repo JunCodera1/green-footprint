@@ -1,5 +1,5 @@
 import React from "react";
-import type { EnergyReportData } from "../../types/smartHome";
+import type { EnergyReportProps } from "../../types/smartHome";
 import {
   BarChart3,
   TrendingDown,
@@ -8,10 +8,6 @@ import {
   AlertTriangle,
 } from "lucide-react";
 
-interface EnergyReportProps {
-  report: EnergyReportData;
-  isDarkMode?: boolean;
-}
 
 export const EnergyReport: React.FC<EnergyReportProps> = ({
   report,

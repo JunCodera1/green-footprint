@@ -1,18 +1,6 @@
 import React, { useState } from "react";
 import { X } from "lucide-react";
-
-interface AddDeviceModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onAdd: (device: {
-    name: string;
-    type: string;
-    location: string;
-    manufacturer: string;
-    model: string;
-  }) => void;
-  isDarkMode: boolean;
-}
+import type { AddDeviceModalProps } from "../../types/smartHome";
 
 const deviceTypes = [
   "Smart Light",
