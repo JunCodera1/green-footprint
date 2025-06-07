@@ -8,8 +8,8 @@ import {
   Copy,
   CheckCircle,
 } from "lucide-react";
-import Navigation from "../components/mainCompo/Navigation";
-import Footer from "../components/mainCompo/Footer";
+import Navigation from "../../components/mainCompo/Navigation";
+import Footer from "../../components/mainCompo/Footer";
 
 // Code examples for different languages
 const codeExamples = {

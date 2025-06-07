@@ -1,11 +1,11 @@
 import React from "react";
-import Navigation from "../components/mainCompo/Navigation";
-import Footer from "../components/mainCompo/Footer";
-import AboutHero from "../components/AboutHero";
-import Timeline from "../components/Timeline";
-import TeamSection from "../components/TeamSection";
-import PartnersPress from "../components/PartnersPress";
-import { useDarkMode } from "../contexts/DarkModeContext";
+import Navigation from "../../components/mainCompo/Navigation";
+import Footer from "../../components/mainCompo/Footer";
+import AboutHero from "../../components/AboutHero";
+import Timeline from "../../components/Timeline";
+import TeamSection from "../../components/TeamSection";
+import PartnersPress from "../../components/PartnersPress";
+import { useDarkMode } from "../../contexts/DarkModeContext";
 
 const About: React.FC = () => {
   const { isDarkMode, toggleDarkMode } = useDarkMode();

@@ -8,8 +8,8 @@ import {
   TreePine,
   AlertTriangle,
 } from "lucide-react";
-import Navigation from "../components/mainCompo/Navigation";
-import Footer from "../components/mainCompo/Footer";
+import Navigation from "../../components/mainCompo/Navigation";
+import Footer from "../../components/mainCompo/Footer";
 import {
   ComposableMap,
   Geographies,

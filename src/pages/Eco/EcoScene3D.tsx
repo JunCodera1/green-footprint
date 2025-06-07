@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { useTheme } from "../hooks/useTheme";
-import Navigation from "../components/mainCompo/Navigation";
-import Footer from "../components/mainCompo/Footer";
-import { useDarkMode } from "../contexts/DarkModeContext";
+import { useTheme } from "../../hooks/useTheme";
+import Navigation from "../../components/mainCompo/Navigation";
+import Footer from "../../components/mainCompo/Footer";
+import { useDarkMode } from "../../contexts/DarkModeContext";
 
 interface EcoScene3DProps {
   width?: number;

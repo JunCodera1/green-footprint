@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import AnimatedCard from "../components/AnimatedCard";
-import PageTransition from "../components/PageTransition";
-import Navigation from "../components/mainCompo/Navigation";
-import Footer from "../components/mainCompo/Footer";
+import AnimatedCard from "../../components/AnimatedCard";
+import PageTransition from "../../components/PageTransition";
+import Navigation from "../../components/mainCompo/Navigation";
+import Footer from "../../components/mainCompo/Footer";
 import { Link } from "react-router-dom";
 import { Leaf } from "lucide-react";
 

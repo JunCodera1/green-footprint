@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useDarkMode } from "../contexts/DarkModeContext";
-import ContactCard from "../components/contact/ContactCard";
-import SmartContactForm from "../components/contact/SmartContactForm";
-import ResourceHub from "../components/contact/ResourceHub";
+import { useDarkMode } from "../../contexts/DarkModeContext";
+import ContactCard from "../../components/contact/ContactCard";
+import SmartContactForm from "../../components/contact/SmartContactForm";
+import ResourceHub from "../../components/contact/ResourceHub";
 
 interface ContactFormData {
   name: string;

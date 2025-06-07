@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import type { Product } from "../types/product";
-import { ProductCard } from "../components/marketplace/ProductCard";
+import type { Product } from "../../types/product";
+import { ProductCard } from "../../components/marketplace/ProductCard";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
-import Navigation from "../components/mainCompo/Navigation";
-import Footer from "../components/mainCompo/Footer";
-import { useDarkMode } from "../contexts/DarkModeContext";
+import Navigation from "../../components/mainCompo/Navigation";
+import Footer from "../../components/mainCompo/Footer";
+import { useDarkMode } from "../../contexts/DarkModeContext";
 
 const mockProducts: Product[] = [
   {

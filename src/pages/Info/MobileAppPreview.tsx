@@ -138,7 +138,7 @@ const MobileAppPreview: React.FC = () => {
           rel="noopener noreferrer"
         >
           <img
-            src="/images/app/app-store-badge.png"
+            src="/images/app/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
             alt="Download on the App Store"
             className="h-12"
           />

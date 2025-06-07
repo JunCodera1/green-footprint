@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Footer from "../components/mainCompo/Footer";
-import Navigation from "../components/mainCompo/Navigation";
-import NewDiscussionModal from "../components/NewDiscussionModal";
+import Footer from "../../components/mainCompo/Footer";
+import Navigation from "../../components/mainCompo/Navigation";
+import NewDiscussionModal from "../../components/NewDiscussionModal";
 import {
   Users,
   Trophy,

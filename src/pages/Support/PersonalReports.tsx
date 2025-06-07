@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Download } from "lucide-react";
-import Navigation from "../components/mainCompo/Navigation";
-import Footer from "../components/mainCompo/Footer";
-import ReportCard from "../components/ReportCard";
-import RecommendationsList from "../components/RecommendationsList";
+import { useDarkMode } from "../../contexts/DarkModeContext";
+import Navigation from "../../components/mainCompo/Navigation";
+import Footer from "../../components/mainCompo/Footer";
+import ReportCard from "../../components/ReportCard";
+import RecommendationsList from "../../components/RecommendationsList";
 
 // Mock data for demonstration
 const mockReports = [
@@ -63,7 +64,7 @@ const mockRecommendations = [
 
 const PersonalReports: React.FC = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("monthly");
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   const handleExportPDF = (period: string) => {
     // Implement PDF export logic here
@@ -81,7 +82,7 @@ const PersonalReports: React.FC = () => {
         isMenuOpen={false}
         setIsMenuOpen={() => {}}
         isDarkMode={isDarkMode}
-        toggleDarkMode={() => setIsDarkMode(!isDarkMode)}
+        toggleDarkMode={toggleDarkMode}
         handleLinkClick={() => {}}
       />
 
