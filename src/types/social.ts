@@ -103,3 +103,11 @@ export interface SocialInvite {
   message?: string;
   referralCode?: string;
 }
+
+export interface SocialProfileProps {
+  profile: SocialProfile;
+  onShare: (userId: string) => void;
+  onMessage: (userId: string) => void;
+  onConnect: (userId: string) => void;
+  isDarkMode?: boolean;
+}
