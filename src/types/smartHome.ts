@@ -6,7 +6,8 @@ export type DeviceType =
   | "Security Camera"
   | "Smart Speaker"
   | "Smart TV"
-  | "Smart Curtain";
+  | "Smart Curtain"
+  | "Smart Solar";
 
 export type DeviceStatus = "online" | "offline" | "error";
 
@@ -37,6 +38,11 @@ export interface SmartDevice {
   status: DeviceStatus;
   lastUpdated: string;
   energyUsage: EnergyUsage;
+  lastReading: {
+    value: number;
+    unit: string;
+  };
+  carbonFootprint?: number;
 }
 
 export interface EnergyReportData {
@@ -75,4 +81,70 @@ export interface SmartMeterData {
   type: "electricity" | "gas" | "water";
   source: "manual" | "automatic";
   verified: boolean;
+}
+
+export interface AddAdviceModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onAdd: (advice: {
+    title: string;
+    description: string;
+    impact: string;
+    deviceType: string;
+  }) => void;
+  isDarkMode: boolean;
+}
+
+export interface AddDeviceModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onAdd: (device: {
+    name: string;
+    type: string;
+    location: string;
+    manufacturer: string;
+    model: string;
+  }) => void;
+  isDarkMode: boolean;
+}
+
+export interface DeviceCardProps {
+  device: SmartDevice;
+  onSettings: (deviceId: string) => void;
+  onToggle: (deviceId: string, status: boolean) => void;
+  isDarkMode?: boolean;
+}
+
+export interface EnergyReportProps {
+  report: EnergyReport;
+  isDarkMode?: boolean;
+}
+
+export interface EnergyReport {
+  period: string;
+  totalConsumption: number; // in kWh
+  carbonFootprint: number; // in kg
+  savings: {
+    cost: number; // in dollars
+  };
+  deviceBreakdown: DeviceConsumption[];
+  recommendations: Recommendation[];
+}
+
+export interface DeviceConsumption {
+  deviceId: string;
+  consumption: number; // in kWh
+  percentage: number; // 0 - 100
+}
+
+export interface Recommendation {
+  id: string;
+  title: string;
+  description: string;
+  priority: "low" | "medium" | "high";
+  potentialSavings: {
+    cost: number; // $
+    carbon: number; // kg CO₂
+    energy: number; // kWh
+  };
 }

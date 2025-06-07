@@ -1,11 +1,7 @@
 import React from "react";
-import type { Achievement } from "../../types/achievement";
+import type { AchievementCardProps } from "../../types/achievement";
 import { Trophy, Medal, Star } from "lucide-react";
 
-interface AchievementCardProps {
-  achievement: Achievement;
-  isDarkMode?: boolean;
-}
 
 export const AchievementCard: React.FC<AchievementCardProps> = ({
   achievement,

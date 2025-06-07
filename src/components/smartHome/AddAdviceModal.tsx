@@ -1,17 +1,6 @@
 import React, { useState } from "react";
 import { X, Lightbulb } from "lucide-react";
-
-interface AddAdviceModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onAdd: (advice: {
-    title: string;
-    description: string;
-    impact: string;
-    deviceType: string;
-  }) => void;
-  isDarkMode: boolean;
-}
+import type { AddAdviceModalProps } from "../../types/smartHome";
 
 const impactLevels = ["High", "Medium", "Low"];
 

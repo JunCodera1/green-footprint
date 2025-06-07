@@ -2,23 +2,9 @@ import React from "react";
 import { MessageCircle, Mail, MapPin } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import type { ContactCardProps } from "../../types/contact";
 
-interface ContactChannel {
-  type: "support" | "sales" | "press";
-  email: string;
-  description: string;
-}
 
-interface ContactCardProps {
-  isDarkMode: boolean;
-  onStartChat: () => void;
-  isChatAvailable: boolean;
-  contactChannels: ContactChannel[];
-  officeLocation: {
-    address: string;
-    coordinates: [number, number]; // [latitude, longitude]
-  };
-}
 
 const ContactCard: React.FC<ContactCardProps> = ({
   isDarkMode,

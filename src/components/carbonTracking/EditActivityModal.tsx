@@ -1,28 +1,6 @@
 import React, { useState } from "react";
 import { X, Car, Home, Utensils, Trash2 } from "lucide-react";
-
-interface EditActivityModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onEdit: (
-    activityId: string,
-    activity: {
-      type: "transport" | "energy" | "food";
-      description: string;
-      co2Amount: number;
-      date: Date;
-    }
-  ) => void;
-  onDelete: (activityId: string) => void;
-  activity?: {
-    id: string;
-    type: "transport" | "energy" | "food";
-    description: string;
-    co2Amount: number;
-    timestamp: Date;
-  };
-  isDarkMode: boolean;
-}
+import type { EditActivityModalProps } from "../../types/carbonTracking";
 
 const activityTypes = [
   { id: "transport", label: "Transport", icon: <Car className="w-5 h-5" /> },

@@ -1,12 +1,7 @@
 import React from "react";
-import type { CarbonOffset } from "../../types/offset";
+import type { OffsetProjectCardProps } from "../../types/offset";
 import { TreePine, Zap, Globe2, Star } from "lucide-react";
 
-interface OffsetProjectCardProps {
-  project: CarbonOffset;
-  onPurchase: (project: CarbonOffset) => void;
-  isDarkMode?: boolean;
-}
 
 export const OffsetProjectCard: React.FC<OffsetProjectCardProps> = ({
   project,
