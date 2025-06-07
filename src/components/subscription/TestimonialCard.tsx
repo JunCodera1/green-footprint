@@ -1,10 +1,8 @@
 import React from "react";
-import type { Testimonial } from "../../types/subscription";
+import type { TestimonialCardProps } from "../../types/subscription";
 import { StarIcon } from "@heroicons/react/24/solid";
 
-interface TestimonialCardProps {
-  testimonial: Testimonial;
-}
+
 
 export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   testimonial,

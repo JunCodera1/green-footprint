@@ -1,11 +1,7 @@
 import React from "react";
-import type { SubscriptionPlan } from "../../types/subscription";
+import type { PricingCardProps } from "../../types/subscription";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/solid";
 
-interface PricingCardProps {
-  plan: SubscriptionPlan;
-  onSelectPlan: (plan: SubscriptionPlan) => void;
-}
 
 export const PricingCard: React.FC<PricingCardProps> = ({
   plan,
