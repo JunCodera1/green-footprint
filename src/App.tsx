@@ -19,7 +19,7 @@ const GreenFootprintLanding = React.lazy(
 const CarbonFootprintCalculator = React.lazy(
   () => import("./pages/CarbonFootprintCalculator")
 );
-const Community = React.lazy(() => import("./pages/Community"));
+const Community = React.lazy(() => import("./pages/Support/Community"));
 const Blog = React.lazy(() => import("./pages/Blog"));
 const BlogPostDetail = React.lazy(() => import("./pages/BlogPostDetail"));
 const GlobalStatistics = React.lazy(() => import("./pages/GlobalStatistics"));

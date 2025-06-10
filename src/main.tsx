@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import GreenFootprintLanding from "./pages/GreenFootprintLanding";
 import Blog from "./pages/Blog";
-import Community from "./pages/Community";
+import Community from "./pages/Support/Community";
 import LoginPage from "./pages/Security/LoginPage";
 import SignUpPage from "./pages/Security/SignUpPage";
 import ForgotPassword from "./pages/Security/ForgotPassword";
