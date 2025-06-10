@@ -36,8 +36,8 @@ import {
   Area,
   AreaChart,
 } from "recharts";
-import { useDarkMode } from "../hooks/useDarkMode";
-import type { Results, FormData } from "../types/foot-print-calculator";
+import { useDarkMode } from "../../hooks/useDarkMode";
+import type { Results, FormData } from "../../types/foot-print-calculator";
 
 const CarbonFootprintCalculator: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
