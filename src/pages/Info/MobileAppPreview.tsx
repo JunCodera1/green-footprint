@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Earth3D from "../../components/Earth3D";
 
 interface Screen {
   id: number;
@@ -166,6 +167,7 @@ const MobileAppPreview: React.FC = () => {
           {screens[currentScreen].description}
         </p>
       </div>
+      <Earth3D></Earth3D>
     </div>
   );
 };
