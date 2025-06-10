@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import type { SubscriptionPlan, Testimonial } from "../types/subscription";
-import { PricingCard } from "../components/subscription/PricingCard";
-import { TestimonialCard } from "../components/subscription/TestimonialCard";
+import type { SubscriptionPlan, Testimonial } from "../../types/subscription";
+import { PricingCard } from "../../components/subscription/PricingCard";
+import { TestimonialCard } from "../../components/subscription/TestimonialCard";
 
 const mockPlans: SubscriptionPlan[] = [
   {

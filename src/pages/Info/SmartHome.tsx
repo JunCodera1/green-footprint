@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { DeviceCard } from "../components/smartHome/DeviceCard";
-import { EnergyReport } from "../components/smartHome/EnergyReport";
+import { DeviceCard } from "../../components/smartHome/DeviceCard";
+import { EnergyReport } from "../../components/smartHome/EnergyReport";
 import type {
   SmartDevice,
   EnergyReportData,
   DeviceType,
   DeviceLocation,
-} from "../types/smartHome";
+} from "../../types/smartHome";
 import { Plus, Settings, Download, Home } from "lucide-react";
-import Navigation from "../components/mainCompo/Navigation";
-import Footer from "../components/mainCompo/Footer";
-import { useDarkMode } from "../contexts/DarkModeContext";
-import { AddDeviceModal } from "../components/smartHome/AddDeviceModal";
+import Navigation from "../../components/mainCompo/Navigation";
+import Footer from "../../components/mainCompo/Footer";
+import { useDarkMode } from "../../contexts/DarkModeContext";
+import { AddDeviceModal } from "../../components/smartHome/AddDeviceModal";
 import { v4 as uuidv4 } from "uuid";
 
 export const SmartHome: React.FC = () => {

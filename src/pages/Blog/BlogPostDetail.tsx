@@ -8,8 +8,8 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
-import Navigation from "../components/mainCompo/Navigation";
-import Footer from "../components/mainCompo/Footer";
+import Navigation from "../../components/mainCompo/Navigation";
+import Footer from "../../components/mainCompo/Footer";
 
 // Mock data - Nên fetch từ API thực tế
 const blogPosts = [
