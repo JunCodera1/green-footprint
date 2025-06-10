@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { QuizCard } from "../components/education/QuizCard";
+import { QuizCard } from "../../components/education/QuizCard";
 import type {
   Quiz,
   Tutorial,
   Webinar,
   Certification,
-} from "../types/education";
+} from "../../types/education";
 import {
   BookOpen,
   Video,

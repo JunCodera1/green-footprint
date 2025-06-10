@@ -1,20 +1,10 @@
 import React, { useState } from "react";
-import {
-  Shield,
-  Download,
-  UserX,
-  Eye,
-  EyeOff,
-  BarChart,
-  Lock,
-  FileText,
-} from "lucide-react";
-import { useDarkMode } from "../contexts/DarkModeContext";
-import Navigation from "../components/mainCompo/Navigation";
-import Footer from "../components/mainCompo/Footer";
-import DataUsageDashboard from "../components/privacy/DataUsageDashboard";
-import PermissionManager from "../components/privacy/PermissionManager";
-import PrivacyComparison from "../components/privacy/PrivacyComparison";
+import { useDarkMode } from "../../contexts/DarkModeContext";
+import Navigation from "../../components/mainCompo/Navigation";
+import Footer from "../../components/mainCompo/Footer";
+import DataUsageDashboard from "../../components/privacy/DataUsageDashboard";
+import PermissionManager from "../../components/privacy/PermissionManager";
+import PrivacyComparison from "../../components/privacy/PrivacyComparison";
 
 interface DataCategory {
   id: string;
@@ -29,9 +19,17 @@ interface DataCategory {
 }
 
 const Privacy: React.FC = () => {
-  const { isDarkMode } = useDarkMode();
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const [dataCategories, setDataCategories] = useState<DataCategory[]>([
     {
@@ -152,6 +150,17 @@ const Privacy: React.FC = () => {
     }
   };
 
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div
       className={`min-h-screen ${isDarkMode ? "bg-gray-900" : "bg-gray-50"}`}
@@ -161,65 +170,23 @@ const Privacy: React.FC = () => {
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
         isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
+        handleLinkClick={handleLinkClick}
       />
-
-      {/* Hero Section */}
       <div className={`py-16 ${isDarkMode ? "bg-gray-800" : "bg-green-50"}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex justify-center mb-4">
-              <Shield
-                className={`w-16 h-16 ${
-                  isDarkMode ? "text-green-400" : "text-green-600"
-                }`}
-              />
-            </div>
-            <h1
-              className={`text-4xl font-bold mb-4 ${
-                isDarkMode ? "text-white" : "text-gray-900"
-              }`}
-            >
-              Your Privacy Matters
-            </h1>
-            <p
-              className={`text-xl max-w-3xl mx-auto ${
-                isDarkMode ? "text-gray-300" : "text-gray-600"
-              }`}
-            >
-              We believe in complete transparency about how we collect, use, and
-              protect your data. You're in control of your information at all
-              times.
-            </p>
-          </div>
-        </div>
+        <DataUsageDashboard
+          categories={dataCategories}
+          isDarkMode={isDarkMode}
+        />
+        <PermissionManager
+          categories={dataCategories}
+          onToggleCategory={handleToggleCategory}
+          onDownloadData={handleDownloadData}
+          onDeleteAccount={handleDeleteAccount}
+          isDarkMode={isDarkMode}
+        />
+        <PrivacyComparison isDarkMode={isDarkMode} />
       </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Data Usage Dashboard */}
-        <section className="mb-16">
-          <DataUsageDashboard
-            categories={dataCategories}
-            isDarkMode={isDarkMode}
-          />
-        </section>
-
-        {/* Permission Manager */}
-        <section className="mb-16">
-          <PermissionManager
-            categories={dataCategories}
-            onToggleCategory={handleToggleCategory}
-            onDownloadData={handleDownloadData}
-            onDeleteAccount={handleDeleteAccount}
-            isDarkMode={isDarkMode}
-          />
-        </section>
-
-        {/* Privacy Comparison */}
-        <section className="mb-16">
-          <PrivacyComparison isDarkMode={isDarkMode} />
-        </section>
-      </div>
-
       <Footer isDarkMode={isDarkMode} />
     </div>
   );

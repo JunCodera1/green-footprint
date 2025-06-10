@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Book, Calculator, CreditCard, BarChart2 } from "lucide-react";
-import { useDarkMode } from "../contexts/DarkModeContext";
-import Navigation from "../components/mainCompo/Navigation";
-import Footer from "../components/mainCompo/Footer";
-import AISearchBar from "../components/help/AISearchBar";
-import KnowledgeBase from "../components/help/KnowledgeBase";
-import TutorialSection from "../components/help/TutorialSection";
-import SearchResults from "../components/help/SearchResults";
+import { useDarkMode } from "../../contexts/DarkModeContext";
+import Navigation from "../../components/mainCompo/Navigation";
+import Footer from "../../components/mainCompo/Footer";
+import AISearchBar from "../../components/help/AISearchBar";
+import KnowledgeBase from "../../components/help/KnowledgeBase";
+import TutorialSection from "../../components/help/TutorialSection";
+import SearchResults from "../../components/help/SearchResults";
 
 interface SearchResult {
   type: "article" | "forum" | "video";

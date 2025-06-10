@@ -3,12 +3,12 @@ import type {
   Achievement,
   Challenge,
   UserProgress,
-} from "../types/achievement";
-import { AchievementCard } from "../components/achievements/AchievementCard";
-import { ChallengeCard } from "../components/achievements/ChallengeCard";
-import Navigation from "../components/mainCompo/Navigation";
-import Footer from "../components/mainCompo/Footer";
-import { useDarkMode } from "../contexts/DarkModeContext";
+} from "../../types/achievement";
+import { AchievementCard } from "../../components/achievements/AchievementCard";
+import { ChallengeCard } from "../../components/achievements/ChallengeCard";
+import Navigation from "../../components/mainCompo/Navigation";
+import Footer from "../../components/mainCompo/Footer";
+import { useDarkMode } from "../../contexts/DarkModeContext";
 import { Trophy, Target, Flame, ChevronUp } from "lucide-react";
 
 // Mock data

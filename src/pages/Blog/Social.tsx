@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { SocialProfileCard } from "../components/social/SocialProfile";
-import type { SocialProfile, SocialPost, Team } from "../types/social";
+import { SocialProfileCard } from "../../components/social/SocialProfile";
+import type { SocialProfile, SocialPost, Team } from "../../types/social";
 import {
   Users,
   Share2,
