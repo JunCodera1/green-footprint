@@ -1,26 +1,27 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Leaf, Mail, AlertCircle, CheckCircle2 } from "lucide-react";
-import AuthNavigation from "../../components/AuthNavigation";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Leaf, Mail, AlertCircle, CheckCircle2 } from 'lucide-react';
+import AuthNavigation from '../../components/AuthNavigation';
+import { SplashCursor } from '../../components/ui/splash-cursor';
 
 const ForgotPassword: React.FC = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setError("");
+    setError('');
     setSuccess(false);
 
     try {
       // Implement your password reset logic here
-      console.log("Reset password for:", email);
+      console.log('Reset password for:', email);
       setSuccess(true);
     } catch {
-      setError("Failed to send reset email. Please try again.");
+      setError('Failed to send reset email. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -28,6 +29,21 @@ const ForgotPassword: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-green-900 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <SplashCursor
+        SIM_RESOLUTION={128}
+        DYE_RESOLUTION={512}
+        DENSITY_DISSIPATION={0.97}
+        VELOCITY_DISSIPATION={0.98}
+        PRESSURE={0.8}
+        PRESSURE_ITERATIONS={20}
+        CURL={30}
+        SPLAT_RADIUS={0.5}
+        SPLAT_FORCE={6000}
+        SHADING={true}
+        COLOR_UPDATE_SPEED={10}
+        BACK_COLOR={{ r: 0, g: 0, b: 0 }}
+        TRANSPARENT={true}
+      />
       <AuthNavigation />
       <div className="max-w-md w-full space-y-8 bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl">
         <div className="text-center">
@@ -38,8 +54,7 @@ const ForgotPassword: React.FC = () => {
             Reset your password
           </h2>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            Enter your email address and we'll send you a link to reset your
-            password
+            Enter your email address and we'll send you a link to reset your password
           </p>
         </div>
 
@@ -53,8 +68,7 @@ const ForgotPassword: React.FC = () => {
         {success && (
           <div className="bg-green-50 dark:bg-green-900/30 text-green-800 dark:text-green-200 p-3 rounded-lg flex items-center">
             <CheckCircle2 className="h-5 w-5 mr-2" />
-            Reset link has been sent to your email address. Please check your
-            inbox.
+            Reset link has been sent to your email address. Please check your inbox.
           </div>
         )}
 
@@ -88,18 +102,15 @@ const ForgotPassword: React.FC = () => {
             type="submit"
             disabled={isLoading}
             className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 ${
-              isLoading ? "opacity-75 cursor-not-allowed" : ""
+              isLoading ? 'opacity-75 cursor-not-allowed' : ''
             }`}
           >
-            {isLoading ? "Sending reset link..." : "Send reset link"}
+            {isLoading ? 'Sending reset link...' : 'Send reset link'}
           </button>
         </form>
 
         <div className="text-center">
-          <Link
-            to="/login"
-            className="text-sm font-medium text-emerald-600 hover:text-emerald-500"
-          >
+          <Link to="/login" className="text-sm font-medium text-emerald-600 hover:text-emerald-500">
             Back to sign in
           </Link>
         </div>
