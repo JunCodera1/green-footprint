@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import React, { lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 
 import GreenFootprintLanding from "./pages/Eco/GreenFootprintLanding";
 import Blog from "./pages/Blog/Blog";
@@ -23,6 +23,7 @@ import Contact from "./pages/Info/Contact";
 import HelpCenter from "./pages/Support/HelpCenter";
 import Privacy from "./pages/Support/Privacy";
 import { Marketplace } from "./pages/Info/Marketplace";
+import FeaturePage from "./pages/Feature/FeaturePage";
 
 // Lazy loaded components
 const BlogPostDetail = lazy(() => import("./pages/Blog/BlogPostDetail"));
@@ -74,6 +75,8 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/help-center" element={<HelpCenter />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/marketplace" element={<Marketplace />} />
+            <Route path="/features" element={<FeaturePage />} />
+
           </Routes>
         </Suspense>
       </BrowserRouter>

@@ -11,6 +11,7 @@ import PageTransition from "./components/PageTransition";
 import Navigation from "./components/mainCompo/Navigation";
 import Footer from "./components/mainCompo/Footer";
 import { useDarkMode } from "./hooks/useDarkMode";
+import APIDocumentation from "./pages/API/APIDocumentation";
 
 // Lazy load pages
 const GreenFootprintLanding = React.lazy(
@@ -19,16 +20,12 @@ const GreenFootprintLanding = React.lazy(
 const CarbonFootprintCalculator = React.lazy(
   () => import("./pages/Carbon/CarbonFootprintCalculator")
 );
-const Community = React.lazy(() => import("./pages/Support/Community"));
+const Community = React.lazy(() => import("./pages/Info/Community"));
 const Blog = React.lazy(() => import("./pages/Blog/Blog"));
 const BlogPostDetail = React.lazy(() => import("./pages/Blog/BlogPostDetail"));
-// const GlobalStatistics = React.lazy(() => import("./pages/Info/GlobalStatistics"));
 const SignUpPage = React.lazy(() => import("./pages/Auth/SignUpPage"));
 const LoginPage = React.lazy(() => import("./pages/Auth/LoginPage"));
 const ForgotPassword = React.lazy(() => import("./pages/Auth/ForgotPassword"));
-const APIDocumentation = React.lazy(
-  () => import("./pages/API/APIDocumentation")
-);
 const About = React.lazy(() => import("./pages/Info/AboutUs"));
 const Contact = React.lazy(() => import("./pages/Info/Contact"));
 
