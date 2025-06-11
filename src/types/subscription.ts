@@ -24,3 +24,12 @@ export interface Testimonial {
   content: string;
   rating: number;
 }
+
+export interface PricingCardProps {
+  plan: SubscriptionPlan;
+  onSelectPlan: (plan: SubscriptionPlan) => void;
+}
+
+export interface TestimonialCardProps {
+  testimonial: Testimonial;
+}

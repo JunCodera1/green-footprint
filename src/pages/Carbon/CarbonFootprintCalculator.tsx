@@ -36,40 +36,8 @@ import {
   Area,
   AreaChart,
 } from "recharts";
-
-interface FormData {
-  // Transportation
-  carMiles: number;
-  carType: "gas" | "hybrid" | "electric";
-  publicTransport: number;
-  flights: number;
-
-  // Energy
-  electricity: number;
-  gas: number;
-  heating: "gas" | "electric" | "oil" | "renewable";
-  homeSize: "small" | "medium" | "large";
-
-  // Food
-  meatFrequency: number;
-  dairyFrequency: number;
-  localFood: number;
-  organicFood: number;
-
-  // Consumption
-  shoppingFrequency: number;
-  clothingPurchases: number;
-  electronicsPurchases: number;
-  recyclingHabits: number;
-}
-
-interface Results {
-  transportation: number;
-  energy: number;
-  food: number;
-  consumption: number;
-  total: number;
-}
+import { useDarkMode } from "../../hooks/useDarkMode";
+import type { Results, FormData } from "../../types/foot-print-calculator";
 
 const CarbonFootprintCalculator: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -91,6 +59,8 @@ const CarbonFootprintCalculator: React.FC = () => {
     electronicsPurchases: 2,
     recyclingHabits: 70,
   });
+  
+  useDarkMode();
   const [results, setResults] = useState<Results | null>(null);
   const [showResults, setShowResults] = useState(false);
   const [isCalculating, setIsCalculating] = useState(false);
@@ -739,7 +709,9 @@ const CarbonFootprintCalculator: React.FC = () => {
   }
 
   return (
+    
     <div className="max-w-5xl mx-auto p-6 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 min-h-screen">
+
       {/* Header */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg mb-6">

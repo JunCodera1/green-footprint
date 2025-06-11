@@ -1,22 +1,7 @@
 import React, { useState } from "react";
 import { Eye, EyeOff, ArrowRight } from "lucide-react";
+import type { Props } from "../../types/privacy/data-usage-dashboard";
 
-interface DataCategory {
-  id: string;
-  name: string;
-  whatWeCollect: string[];
-  whyWeNeedIt: string[];
-  howProcessed: {
-    step: string;
-    description: string;
-  }[];
-  isEnabled: boolean;
-}
-
-interface Props {
-  categories: DataCategory[];
-  isDarkMode: boolean;
-}
 
 const DataUsageDashboard: React.FC<Props> = ({ categories, isDarkMode }) => {
   const [viewMode, setViewMode] = useState<"collect" | "need">("collect");

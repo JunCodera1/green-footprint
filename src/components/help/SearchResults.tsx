@@ -1,19 +1,8 @@
 import React from "react";
 import { FileText, MessageCircle, Play, Clock } from "lucide-react";
+import type { SearchResultsProps } from "../../types/help";
 
-interface SearchResult {
-  type: "article" | "forum" | "video";
-  title: string;
-  excerpt: string;
-  url: string;
-  timestamp?: number;
-}
 
-interface SearchResultsProps {
-  results: SearchResult[];
-  isLoading: boolean;
-  isDarkMode: boolean;
-}
 
 const SearchResults: React.FC<SearchResultsProps> = ({
   results,

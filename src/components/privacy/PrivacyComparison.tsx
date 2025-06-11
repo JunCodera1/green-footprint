@@ -1,9 +1,7 @@
 import React from "react";
 import { Check, X, Info, Shield, Lock, Eye } from "lucide-react";
+import type { Props } from "../../types/privacy/privacy-comparision";
 
-interface Props {
-  isDarkMode: boolean;
-}
 
 const PrivacyComparison: React.FC<Props> = ({ isDarkMode }) => {
   const comparisonData = [

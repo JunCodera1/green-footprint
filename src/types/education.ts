@@ -116,3 +116,9 @@ export interface Certification {
     verificationUrl?: string;
   };
 }
+
+export interface QuizCardProps {
+  quiz: Quiz;
+  onStart: (quizId: string) => void;
+  isDarkMode?: boolean;
+}

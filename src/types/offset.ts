@@ -49,3 +49,9 @@ export interface OffsetPortfolio {
     communitiesSupported: number;
   };
 }
+
+export interface OffsetProjectCardProps {
+  project: CarbonOffsetProject;
+  onPurchase: (project: CarbonOffsetProject) => void;
+  isDarkMode?: boolean;
+}

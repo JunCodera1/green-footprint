@@ -1,5 +1,4 @@
 import React from "react";
-import type { SocialProfile } from "../../types/social";
 import {
   Users,
   Award,
@@ -10,14 +9,7 @@ import {
   MessageCircle,
   UserPlus,
 } from "lucide-react";
-
-interface SocialProfileProps {
-  profile: SocialProfile;
-  onShare: (userId: string) => void;
-  onMessage: (userId: string) => void;
-  onConnect: (userId: string) => void;
-  isDarkMode?: boolean;
-}
+import type { SocialProfileProps } from "../../types/social";
 
 export const SocialProfileCard: React.FC<SocialProfileProps> = ({
   profile,

@@ -41,7 +41,8 @@ const Navigation: React.FC<NavigationProps> = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2" 
+          onClick={() => navigate("/")}>
             <Leaf className="w-8 h-8 text-emerald-600" />
             <span className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
               GreenFootprint
@@ -118,18 +119,6 @@ const Navigation: React.FC<NavigationProps> = ({
                 >
                   <UserPlus className="w-4 h-4 mr-2" />
                   Sign Up
-                </button>
-                <button
-                  onClick={() => navigate("/app-preview")}
-                  className="inline-flex items-center px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  Preview App
-                </button>
-                <button
-                  onClick={() => navigate("/eco-scene")}
-                  className="inline-flex items-center px-6 py-2 bg-gradient-to-r from-orange-500 to-pink-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  EcoScene
                 </button>
                 <button
                   onClick={() => navigate("/carbon-footprint-calculator")}

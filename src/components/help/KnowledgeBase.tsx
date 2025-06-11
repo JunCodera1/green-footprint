@@ -1,17 +1,6 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
-
-interface Category {
-  id: string;
-  title: string;
-  icon: React.ReactNode;
-  description: string;
-}
-
-interface KnowledgeBaseProps {
-  categories: Category[];
-  isDarkMode: boolean;
-}
+import type { KnowledgeBaseProps } from "../../types";
 
 const KnowledgeBase: React.FC<KnowledgeBaseProps> = ({
   categories,

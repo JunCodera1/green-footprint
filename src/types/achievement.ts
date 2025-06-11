@@ -41,3 +41,14 @@ export interface UserProgress {
   currentStreak: number;
   longestStreak: number;
 }
+
+export interface AchievementCardProps {
+  achievement: Achievement;
+  isDarkMode?: boolean;
+}
+
+export interface ChallengeCardProps {
+  challenge: Challenge;
+  onJoin: (challengeId: string) => void;
+  isDarkMode?: boolean;
+}

@@ -1,27 +1,7 @@
 import React, { useState } from "react";
 import { FileDown, ChevronDown, ChevronUp, Download } from "lucide-react";
+import type { ResourceHubProps } from "../../types/contact";
 
-interface FAQ {
-  id: string;
-  category: string;
-  question: string;
-  answer: string;
-}
-
-interface MediaKitItem {
-  id: string;
-  name: string;
-  description: string;
-  fileUrl: string;
-  fileSize: string;
-  fileType: string;
-}
-
-interface ResourceHubProps {
-  isDarkMode: boolean;
-  faqs: FAQ[];
-  mediaKit: MediaKitItem[];
-}
 
 const ResourceHub: React.FC<ResourceHubProps> = ({
   isDarkMode,

@@ -1,25 +1,6 @@
 import React from "react";
 import { Download, UserX, Shield } from "lucide-react";
-
-interface DataCategory {
-  id: string;
-  name: string;
-  whatWeCollect: string[];
-  whyWeNeedIt: string[];
-  howProcessed: {
-    step: string;
-    description: string;
-  }[];
-  isEnabled: boolean;
-}
-
-interface Props {
-  categories: DataCategory[];
-  onToggleCategory: (categoryId: string) => void;
-  onDownloadData: () => void;
-  onDeleteAccount: () => void;
-  isDarkMode: boolean;
-}
+import type { Props } from "../../types/privacy/permission-manager";
 
 const PermissionManager: React.FC<Props> = ({
   categories,

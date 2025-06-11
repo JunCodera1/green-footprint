@@ -1,17 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Search, Bot, Loader } from "lucide-react";
+import type { AISearchBarProps, Suggestion } from "../../types";
 
-interface AISearchBarProps {
-  onSearch: (query: string) => void;
-  isDarkMode: boolean;
-  isLoading: boolean;
-}
-
-interface Suggestion {
-  id: string;
-  text: string;
-  type: "article" | "question";
-}
 
 const AISearchBar: React.FC<AISearchBarProps> = ({
   onSearch,

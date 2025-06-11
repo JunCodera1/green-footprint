@@ -1,5 +1,4 @@
 import React from "react";
-import type { SmartDevice } from "../../types/smartHome";
 import {
   Thermometer,
   Lightbulb,
@@ -8,13 +7,7 @@ import {
   Activity,
   Settings,
 } from "lucide-react";
-
-interface DeviceCardProps {
-  device: SmartDevice;
-  onSettings: (deviceId: string) => void;
-  onToggle: (deviceId: string, status: boolean) => void;
-  isDarkMode?: boolean;
-}
+import type { DeviceCardProps } from "../../types/smartHome";
 
 export const DeviceCard: React.FC<DeviceCardProps> = ({
   device,
@@ -25,13 +18,13 @@ export const DeviceCard: React.FC<DeviceCardProps> = ({
   const renderIcon = () => {
     const iconProps = { className: "w-6 h-6" };
     switch (device.type) {
-      case "thermostat":
+      case "Smart Thermostat":
         return <Thermometer {...iconProps} />;
-      case "light":
+      case "Smart Light":
         return <Lightbulb {...iconProps} />;
-      case "plug":
+      case "Smart Plug":
         return <Power {...iconProps} />;
-      case "solar":
+      case "Smart Solar":
         return <Sun {...iconProps} />;
       default:
         return <Activity {...iconProps} />;
