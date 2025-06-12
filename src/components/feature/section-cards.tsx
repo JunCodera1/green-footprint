@@ -1,4 +1,3 @@
-import React from 'react';
 import { Leaf, TreePine, Recycle, Zap, Shield, Users } from 'lucide-react';
 import { useDarkMode } from '../../contexts/DarkModeContext';
 

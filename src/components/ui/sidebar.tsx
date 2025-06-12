@@ -1,86 +1,74 @@
-import React from "react";
-import { cn } from "../../lib/utils";
+import React from 'react';
+import { cn } from '../../lib/utils';
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
-  collapsible?: "offcanvas" | "overlay";
-  variant?: "inset" | "default";
+  collapsible?: 'offcanvas' | 'overlay';
+  variant?: 'inset' | 'default';
+  isDarkMode: boolean;
 }
 
 export const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
-  ({ className, children, ...props }, ref) => {
+  ({ isDarkMode, className, children, ...rest }, ref) => {
     return (
       <div
         ref={ref}
         className={cn(
-          "flex h-full w-64 flex-col border-r border-emerald-100 bg-emerald-50/50",
+          'flex h-full w-64 flex-col border-r',
+          isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-emerald-50/50 border-emerald-100',
           className
         )}
-        {...props}
+        {...rest}
       >
         {children}
       </div>
     );
   }
 );
-Sidebar.displayName = "Sidebar";
 
-export const SidebarHeader = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "flex h-14 items-center border-b border-emerald-100 bg-emerald-50 px-4",
-      className
-    )}
-    {...props}
-  />
-));
-SidebarHeader.displayName = "SidebarHeader";
+Sidebar.displayName = 'Sidebar';
+
+export const SidebarHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(
+        'flex h-14 items-center border-b border-emerald-100 bg-emerald-50 px-4',
+        className
+      )}
+      {...props}
+    />
+  )
+);
 
 export const SidebarContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex-1 overflow-auto p-4", className)}
-    {...props}
-  />
+  <div ref={ref} className={cn('flex-1 overflow-auto p-4', className)} {...props} />
 ));
-SidebarContent.displayName = "SidebarContent";
 
-export const SidebarFooter = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "border-t border-emerald-100 bg-emerald-50/50 p-4",
-      className
-    )}
-    {...props}
-  />
-));
-SidebarFooter.displayName = "SidebarFooter";
+export const SidebarFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn('border-t border-emerald-100 bg-emerald-50/50 p-4', className)}
+      {...props}
+    />
+  )
+);
 
-export const SidebarMenu = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex flex-col gap-1", className)} {...props} />
-));
-SidebarMenu.displayName = "SidebarMenu";
+export const SidebarMenu = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn('flex flex-col gap-1', className)} {...props} />
+  )
+);
 
 export const SidebarMenuItem = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex items-center", className)} {...props} />
+  <div ref={ref} className={cn('flex items-center', className)} {...props} />
 ));
-SidebarMenuItem.displayName = "SidebarMenuItem";
 
 export const SidebarMenuButton = React.forwardRef<
   HTMLButtonElement,
@@ -89,34 +77,30 @@ export const SidebarMenuButton = React.forwardRef<
   <button
     ref={ref}
     className={cn(
-      "flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-emerald-700 hover:bg-emerald-100/50 hover:text-emerald-800",
+      'flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-emerald-700',
       className
     )}
     {...props}
   />
 ));
-SidebarMenuButton.displayName = "SidebarMenuButton";
 
-export const SidebarInset = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex flex-1 flex-col bg-white", className)}
-    {...props}
-  />
-));
-SidebarInset.displayName = "SidebarInset";
+interface SidebarInsetProps extends React.HTMLAttributes<HTMLDivElement> {
+  isDarkMode?: boolean;
+}
+
+export const SidebarInset = React.forwardRef<HTMLDivElement, SidebarInsetProps>(
+  ({ isDarkMode, className, children, ...rest }, ref) => (
+    <div ref={ref} className={cn('flex flex-1 flex-col bg-white', className)} {...rest}>
+      {children}
+    </div>
+  )
+);
+
+SidebarInset.displayName = 'SidebarInset';
 
 export const SidebarProvider = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex h-screen bg-emerald-50/30", className)}
-    {...props}
-  />
+  <div ref={ref} className={cn('flex h-screen bg-emerald-50/30', className)} {...props} />
 ));
-SidebarProvider.displayName = "SidebarProvider";

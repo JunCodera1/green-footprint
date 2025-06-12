@@ -53,8 +53,8 @@ const Navigation: React.FC<NavigationProps> = ({
             {!isAuthPage && (
               <>
                 <a
-                  href="#features"
-                  onClick={(e) => handleLinkClick(e, "#features")}
+                  href="/features"
+                  onClick={() => navigate("/features")}
                   className={`transition-colors ${
                     isDarkMode
                       ? "text-gray-300 hover:text-emerald-400"
@@ -64,8 +64,8 @@ const Navigation: React.FC<NavigationProps> = ({
                   Features
                 </a>
                 <a
-                  href="#about"
-                  onClick={(e) => handleLinkClick(e, "#about")}
+                  href="/about"
+                  onClick={() => navigate("/about")}
                   className={`transition-colors ${
                     isDarkMode
                       ? "text-gray-300 hover:text-emerald-400"

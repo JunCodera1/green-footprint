@@ -70,13 +70,12 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/subscription" element={<Subscription />} />
             <Route path="/education" element={<EducationPage />} />
             <Route path="/carbon-tracking" element={<CarbonTracking />} />
-            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/help-center" element={<HelpCenter />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/features" element={<FeaturePage />} />
-
           </Routes>
         </Suspense>
       </BrowserRouter>
