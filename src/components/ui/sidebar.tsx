@@ -14,7 +14,7 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
         ref={ref}
         className={cn(
           'flex h-full w-64 flex-col border-r',
-          isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-emerald-50/50 border-emerald-100',
+          isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-emerald-50/50 border-emerald-900',
           className
         )}
         {...rest}
@@ -24,8 +24,6 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>(
     );
   }
 );
-
-Sidebar.displayName = 'Sidebar';
 
 export const SidebarHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
@@ -95,8 +93,6 @@ export const SidebarInset = React.forwardRef<HTMLDivElement, SidebarInsetProps>(
     </div>
   )
 );
-
-SidebarInset.displayName = 'SidebarInset';
 
 export const SidebarProvider = React.forwardRef<
   HTMLDivElement,

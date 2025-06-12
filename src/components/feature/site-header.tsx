@@ -14,12 +14,12 @@ export function SiteHeader({
   setIsMenuOpen,
   isDarkMode,
   toggleDarkMode,
-}: SiteHeaderProps) {
+}: SiteHeaderProps & React.HTMLAttributes<HTMLDivElement>) {
   return (
     <header
-      className={`flex h-14 items-center gap-4 border-b  ${
-        isDarkMode ? 'border-emerald-700' : 'border-emerald-300'
-      } bg-emerald-50/50 px-4 lg:px-6`}
+      className={`flex h-14 items-center gap-4 border-b  bg-emerald-50/50 px-4 lg:px-6 ${
+        isDarkMode ? 'bg-gray-800 border-white' : 'bg-white'
+      }`}
     >
       <Button
         variant="ghost"
@@ -32,8 +32,10 @@ export function SiteHeader({
       </Button>
       <div className="flex-1">
         <h1
-          className={`text-lg font-semibold ${
-            isDarkMode ? 'text-emerald-300' : 'text-emerald-600'
+          className={`${
+            isDarkMode
+              ? 'text-base font-semibold bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent'
+              : 'text-base font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent'
           } `}
         >
           Green Footprint

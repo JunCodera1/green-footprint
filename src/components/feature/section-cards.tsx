@@ -1,7 +1,6 @@
-import { Leaf, TreePine, Recycle, Zap, Shield, Users } from 'lucide-react';
-import { useDarkMode } from '../../contexts/DarkModeContext';
+import { Leaf, TreePine, Recycle, Zap, Shield, Users, type LucideIcon } from 'lucide-react';
 
-const cards = [
+export const cards = [
   {
     title: 'Carbon Tracking',
     description: 'Monitor your carbon footprint in real-time with our advanced tracking system.',
@@ -46,16 +45,25 @@ const cards = [
   },
 ];
 
-export function SectionCards() {
-  const { isDarkMode } = useDarkMode();
+interface SectionCardsProps {
+  attributes: {
+    title: string;
+    description: string;
+    icon: LucideIcon;
+    color: string;
+    bgColor: string;
+  }[];
+  isDarkMode: boolean;
+}
 
+export function SectionCards({ attributes, isDarkMode }: SectionCardsProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {cards.map((card, index) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pl-4 pr-4">
+      {attributes.map((card, index) => (
         <div
           key={index}
           className={`p-6 rounded-lg transition-all duration-300 hover:shadow-lg ${
-            isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'
+            isDarkMode ? 'bg-gray-700 hover:bg-gray-500' : 'bg-gray-100 hover:bg-gray-50'
           }`}
         >
           <div

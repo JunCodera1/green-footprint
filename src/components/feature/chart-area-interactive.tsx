@@ -1,7 +1,4 @@
 'use client';
-
-import React from 'react';
-import { useDarkMode } from '../../contexts/DarkModeContext';
 import {
   Area,
   AreaChart,
@@ -12,7 +9,7 @@ import {
   YAxis,
 } from 'recharts';
 
-const data = [
+export const dataChart = [
   { month: 'Jan', carbon: 400, offset: 240 },
   { month: 'Feb', carbon: 300, offset: 139 },
   { month: 'Mar', carbon: 200, offset: 980 },
@@ -22,9 +19,16 @@ const data = [
   { month: 'Jul', carbon: 349, offset: 430 },
 ];
 
-export function ChartAreaInteractive() {
-  const { isDarkMode } = useDarkMode();
+interface ChartAreaInteractiveProps {
+  attributes: {
+    month: string;
+    carbon: number;
+    offset: number;
+  }[];
+  isDarkMode: boolean;
+}
 
+export function ChartAreaInteractive({ attributes, isDarkMode }: ChartAreaInteractiveProps) {
   return (
     <div className={`p-6 rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
       <h3 className={`text-lg font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -33,7 +37,7 @@ export function ChartAreaInteractive() {
       <div className="h-[300px]">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
-            data={data}
+            data={attributes}
             margin={{
               top: 10,
               right: 30,

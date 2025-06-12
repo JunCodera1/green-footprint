@@ -34,7 +34,9 @@ export function NavMain({
             <SidebarMenuButton
               className={`bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground 
             active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear ${
-              isDarkMode ? 'text-emerald-200' : 'text-emerald-600'
+              isDarkMode
+                ? 'text-emerald-200 hover:bg-blue-800'
+                : 'text-emerald-600 hover:bg-blue-200'
             }`}
             >
               <IconCirclePlusFilled />
@@ -46,9 +48,16 @@ export function NavMain({
           {items.map((item) => {
             const Icon = item.icon;
             return (
-              <SidebarMenuItem key={item.title}>
+              <SidebarMenuItem
+                key={item.title}
+                className={`${
+                  isDarkMode
+                    ? 'text-emerald-400 hover:bg-blue-800'
+                    : 'text-emerald-700 hover:bg-blue-200'
+                }`}
+              >
                 <SidebarMenuButton>
-                  <Icon className={`${isDarkMode ? 'text-emerald-400' : 'text-emerald-700'}`} />
+                  <Icon className={`${isDarkMode ? 'text-emerald-400 ' : 'text-emerald-700'}`} />
                   <span className={`${isDarkMode ? 'text-emerald-400' : 'text-emerald-700'}`}>
                     {item.title}
                   </span>
