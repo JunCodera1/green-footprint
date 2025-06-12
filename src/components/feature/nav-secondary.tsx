@@ -33,7 +33,14 @@ export function NavSecondary({
           {items.map((item) => {
             const Icon = item.icon;
             return (
-              <SidebarMenuItem key={item.title}>
+              <SidebarMenuItem
+                key={item.title}
+                className={`${
+                  isDarkMode
+                    ? 'text-emerald-400 hover:bg-blue-800'
+                    : 'text-emerald-700 hover:bg-blue-200'
+                }`}
+              >
                 <SidebarMenuButton>
                   <a href={item.url} className="flex items-center gap-2">
                     <Icon className={`${isDarkMode ? 'text-emerald-400' : 'text-emerald-700'}`} />

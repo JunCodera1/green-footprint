@@ -38,7 +38,14 @@ export function NavDocuments({
           {items.map((item) => {
             const Icon = item.icon;
             return (
-              <SidebarMenuItem key={item.name}>
+              <SidebarMenuItem
+                key={item.name}
+                className={`${
+                  isDarkMode
+                    ? 'text-emerald-400 hover:bg-blue-800'
+                    : 'text-emerald-700 hover:bg-blue-200'
+                }`}
+              >
                 <SidebarMenuButton>
                   <a href={item.url} className="flex items-center gap-2">
                     <Icon className={`${isDarkMode ? 'text-emerald-400' : 'text-emerald-700'}`} />
@@ -56,7 +63,11 @@ export function NavDocuments({
                       <span className="sr-only">More</span>
                     </button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-24 rounded-lg" side="right" align="start">
+                  <DropdownMenuContent
+                    className="w-24 rounded-lg bg-green-100"
+                    side="right"
+                    align="start"
+                  >
                     <DropdownMenuItem>
                       <IconFolder />
                       <span>Open</span>
@@ -76,7 +87,13 @@ export function NavDocuments({
             );
           })}
           <SidebarMenuItem>
-            <SidebarMenuButton className="text-sidebar-foreground/70">
+            <SidebarMenuButton
+              className={`${
+                isDarkMode
+                  ? 'text-emerald-400 hover:bg-blue-800'
+                  : 'text-emerald-700 hover:bg-blue-200'
+              }`}
+            >
               <IconDots
                 className={`text-sidebar-foreground/70 ${
                   isDarkMode ? 'text-emerald-200' : 'text-emerald-600'

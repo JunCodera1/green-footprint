@@ -107,11 +107,13 @@ export const AppSidebar: React.FC<AppSidebarProps> & React.HTMLAttributes<HTMLDi
   return (
     <Sidebar
       collapsible="offcanvas"
-      className={`${isDarkMode ? 'bg-gray-800 border-gray-800' : 'bg-white border-gray-200'}`}
+      className={`${isDarkMode ? 'border-gray-200' : 'bg-white border-gray-900'}`}
       isDarkMode={isDarkMode}
     >
       {/* Header */}
-      <SidebarHeader className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
+      <SidebarHeader
+        className={`${isDarkMode ? 'bg-gray-800 border-gray-200' : 'bg-white border-black'}`}
+      >
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
@@ -144,7 +146,7 @@ export const AppSidebar: React.FC<AppSidebarProps> & React.HTMLAttributes<HTMLDi
       </SidebarContent>
 
       {/* Footer */}
-      <SidebarFooter className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
+      <SidebarFooter className={`${isDarkMode ? 'bg-gray-800' : 'bg-white border-black'}`}>
         <NavUser user={data.user} isDarkMode={isDarkMode} />
       </SidebarFooter>
     </Sidebar>
