@@ -1,37 +1,37 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 
-import GreenFootprintLanding from "./pages/Eco/GreenFootprintLanding";
-import Blog from "./pages/Blog/Blog";
-import Community from "./pages/Support/Community";
-import AIAnalytic from "./pages/API/AIAnalytic";
-import PersonalReports from "./pages/Support/PersonalReports"; 
-import CarbonFootprintCalculator from "./pages/Carbon/CarbonFootprintCalculator";
-import { DarkModeProvider } from "./contexts/DarkModeContext";
-import MobileAppPreview from "./pages/Info/MobileAppPreview";
-import EcoScene3D from "./pages/Eco/EcoScene3D";
-import { SmartHome } from "./pages/Info/SmartHome";
-import { CarbonOffset } from "./pages/Carbon/CarbonOffset";
-import { SocialPage } from "./pages/Blog/Social";
-import { Achievements } from "./pages/Info/Achievements";
-import { Subscription } from "./pages/Info/Subscription";
-import { EducationPage } from "./pages/Eco/Education";
-import CarbonTracking from "./pages/Carbon/CarbonTracking";
-import Contact from "./pages/Info/Contact";
-import HelpCenter from "./pages/Support/HelpCenter";
-import Privacy from "./pages/Support/Privacy";
-import { Marketplace } from "./pages/Info/Marketplace";
-import FeaturePage from "./pages/Feature/FeaturePage";
+import { DarkModeProvider } from './contexts/DarkModeContext';
 
 // Lazy loaded components
-const BlogPostDetail = lazy(() => import("./pages/Blog/BlogPostDetail"));
-const LoginPage = lazy(() => import("./pages/Auth/LoginPage"));
-const SignUpPage = lazy(() => import("./pages/Auth/SignUpPage"));
-const ForgotPassword = lazy(() => import("./pages/Auth/ForgotPassword"));
-const APIDocumentation = lazy(() => import("./pages/API/APIDocumentation"));
-const AboutUs = lazy(() => import("./pages/Info/AboutUs"));
+const BlogPostDetail = lazy(() => import('./pages/Blog/BlogPostDetail'));
+const LoginPage = lazy(() => import('./pages/Auth/LoginPage'));
+const SignUpPage = lazy(() => import('./pages/Auth/SignUpPage'));
+const ForgotPassword = lazy(() => import('./pages/Auth/ForgotPassword'));
+const APIDocumentation = lazy(() => import('./pages/API/APIDocumentation'));
+const AboutUs = lazy(() => import('./pages/Info/AboutUs'));
+const GreenFootprintLanding = lazy(() => import('./pages/Eco/GreenFootprintLanding'));
+const Blog = lazy(() => import('./pages/Blog/Blog'));
+const Community = lazy(() => import('./pages/Support/Community'));
+const AIAnalytic = lazy(() => import('./pages/API/AIAnalytic'));
+const PersonalReports = lazy(() => import('./pages/Support/PersonalReports'));
+const CarbonFootprintCalculator = lazy(() => import('./pages/Carbon/CarbonFootprintCalculator'));
+const MobileAppPreview = lazy(() => import('./pages/Info/MobileAppPreview'));
+const EcoScene3D = lazy(() => import('./pages/Eco/EcoScene3D'));
+const SmartHome = lazy(() => import('./pages/Info/SmartHome'));
+const CarbonOffset = lazy(() => import('./pages/Carbon/CarbonOffset'));
+const SocialPage = lazy(() => import('./pages/Blog/Social'));
+const Achievements = lazy(() => import('./pages/Info/Achievements'));
+const Subscription = lazy(() => import('./pages/Info/Subscription'));
+const EducationPage = lazy(() => import('./pages/Eco/Education'));
+const CarbonTracking = lazy(() => import('./pages/Carbon/CarbonTracking'));
+const Contact = lazy(() => import('./pages/Info/Contact'));
+const HelpCenter = lazy(() => import('./pages/Support/HelpCenter'));
+const Privacy = lazy(() => import('./pages/Support/Privacy'));
+const Marketplace = lazy(() => import('./pages/Info/Marketplace'));
+const FeaturePage = lazy(() => import('./pages/Feature/FeaturePage'));
 
 // Loading component for Suspense
 const LoadingFallback = () => (
@@ -40,17 +40,14 @@ const LoadingFallback = () => (
   </div>
 );
 
-createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <DarkModeProvider>
       <BrowserRouter>
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
             <Route path="/" element={<GreenFootprintLanding />} />
-            <Route
-              path="/carbon-footprint-calculator"
-              element={<CarbonFootprintCalculator />}
-            />
+            <Route path="/carbon-footprint-calculator" element={<CarbonFootprintCalculator />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPostDetail />} />
             <Route path="/community" element={<Community />} />
