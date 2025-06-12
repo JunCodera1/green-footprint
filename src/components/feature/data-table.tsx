@@ -161,7 +161,10 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     header: 'Section Type',
     cell: ({ row }) => (
       <div className="w-32">
-        <Badge variant="outline" className="text-muted-foreground px-1.5">
+        <Badge
+          variant="outline"
+          className="bg-emerald-50/90 dark:bg-emerald-900/90 text-emerald-900 dark:text-emerald-100 border-emerald-200/50 dark:border-emerald-800/50 px-1.5"
+        >
           {row.original.type}
         </Badge>
       </div>
@@ -171,11 +174,14 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     accessorKey: 'status',
     header: 'Status',
     cell: ({ row }) => (
-      <Badge variant="outline" className="text-muted-foreground px-1.5">
+      <Badge
+        variant="outline"
+        className="bg-emerald-50/90 dark:bg-emerald-900/90 text-emerald-900 dark:text-emerald-100 border-emerald-200/50 dark:border-emerald-800/50 px-1.5"
+      >
         {row.original.status === 'Done' ? (
-          <IconCircleCheckFilled className="fill-green-500 dark:fill-green-400" />
+          <IconCircleCheckFilled className="fill-emerald-500 dark:fill-emerald-400" />
         ) : (
-          <IconLoader />
+          <IconLoader className="text-emerald-500 dark:text-emerald-400" />
         )}
         {row.original.status}
       </Badge>
@@ -248,15 +254,31 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
           </Label>
           <Select>
             <SelectTrigger
-              className="w-38 **:data-[slot=select-value]:block **:data-[slot=select-value]:truncate"
+              className="w-38 bg-white/50 dark:bg-gray-900/50 border-emerald-200/50 dark:border-emerald-800/50 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50/50 dark:hover:bg-emerald-900/50 focus:ring-2 focus:ring-emerald-500/50 dark:focus:ring-emerald-400/50 transition-all duration-300 **:data-[slot=select-value]:block **:data-[slot=select-value]:truncate"
               size="sm"
               id={`${row.original.id}-reviewer`}
             >
               <SelectValue placeholder="Assign reviewer" />
             </SelectTrigger>
-            <SelectContent align="end">
-              <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
-              <SelectItem value="Jamik Tashpulatov">Jamik Tashpulatov</SelectItem>
+            <SelectContent className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border border-emerald-200 dark:border-emerald-800 shadow-lg">
+              <SelectItem
+                value="Eddie Lake"
+                className="text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100/80 dark:hover:bg-emerald-800/50 focus:bg-emerald-100/80 dark:focus:bg-emerald-800/50 transition-colors duration-300"
+              >
+                Eddie Lake
+              </SelectItem>
+              <SelectItem
+                value="Jamik Tashpulatov"
+                className="text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100/80 dark:hover:bg-emerald-800/50 focus:bg-emerald-100/80 dark:focus:bg-emerald-800/50 transition-colors duration-300"
+              >
+                Jamik Tashpulatov
+              </SelectItem>
+              <SelectItem
+                value="Emily Whalen"
+                className="text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100/80 dark:hover:bg-emerald-800/50 focus:bg-emerald-100/80 dark:focus:bg-emerald-800/50 transition-colors duration-300"
+              >
+                Emily Whalen
+              </SelectItem>
             </SelectContent>
           </Select>
         </>
@@ -270,19 +292,28 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"
-            className="data-[state=open]:bg-muted text-muted-foreground flex size-8"
+            className="data-[state=open]:bg-emerald-100/80 dark:data-[state=open]:bg-emerald-800/50 text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30 flex size-8"
             size="icon"
           >
             <IconDotsVertical />
             <span className="sr-only">Open menu</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-32">
-          <DropdownMenuItem>Edit</DropdownMenuItem>
-          <DropdownMenuItem>Make a copy</DropdownMenuItem>
-          <DropdownMenuItem>Favorite</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem className="text-destructive focus:text-destructive">
+        <DropdownMenuContent
+          align="end"
+          className="w-32 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border border-emerald-200 dark:border-emerald-800 shadow-lg"
+        >
+          <DropdownMenuItem className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/80 dark:hover:bg-emerald-800/50">
+            Edit
+          </DropdownMenuItem>
+          <DropdownMenuItem className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/80 dark:hover:bg-emerald-800/50">
+            Make a copy
+          </DropdownMenuItem>
+          <DropdownMenuItem className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/80 dark:hover:bg-emerald-800/50">
+            Favorite
+          </DropdownMenuItem>
+          <DropdownMenuSeparator className="bg-emerald-200/50 dark:bg-emerald-800/50" />
+          <DropdownMenuItem className="text-red-600 dark:text-red-400 hover:bg-red-100/80 dark:hover:bg-red-900/50 focus:text-red-600 dark:focus:text-red-400">
             Delete
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -301,7 +332,7 @@ function DraggableRow({ row }: { row: Row<z.infer<typeof schema>> }) {
       data-state={row.getIsSelected() && 'selected'}
       data-dragging={isDragging}
       ref={setNodeRef}
-      className="relative z-0 data-[dragging=true]:z-10 data-[dragging=true]:opacity-80"
+      className="relative z-0 hover:bg-emerald-50/50 dark:hover:bg-emerald-900/50 transition-colors duration-200 data-[dragging=true]:z-10 data-[dragging=true]:opacity-80 data-[dragging=true]:bg-emerald-100/50 dark:data-[dragging=true]:bg-emerald-800/50"
       style={{
         transform: CSS.Transform.toString(transform),
         transition: transition,
@@ -389,11 +420,31 @@ export function DataTable({ isDarkMode: isDarkMode, data: initialData }: DataTab
           <SelectTrigger className="flex w-fit @4xl/main:hidden" size="sm" id="view-selector">
             <SelectValue placeholder="Select a view" />
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="outline">Outline</SelectItem>
-            <SelectItem value="past-performance">Past Performance</SelectItem>
-            <SelectItem value="key-personnel">Key Personnel</SelectItem>
-            <SelectItem value="focus-documents">Focus Documents</SelectItem>
+          <SelectContent className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border border-emerald-200 dark:border-emerald-800 shadow-lg">
+            <SelectItem
+              value="outline"
+              className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/80 dark:hover:bg-emerald-800/50"
+            >
+              Outline
+            </SelectItem>
+            <SelectItem
+              value="past-performance"
+              className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/80 dark:hover:bg-emerald-800/50"
+            >
+              Past Performance
+            </SelectItem>
+            <SelectItem
+              value="key-personnel"
+              className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/80 dark:hover:bg-emerald-800/50"
+            >
+              Key Personnel
+            </SelectItem>
+            <SelectItem
+              value="focus-documents"
+              className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/80 dark:hover:bg-emerald-800/50"
+            >
+              Focus Documents
+            </SelectItem>
           </SelectContent>
         </Select>
         <TabsList className="**:data-[slot=badge]:bg-muted-foreground/30 hidden **:data-[slot=badge]:size-5 **:data-[slot=badge]:rounded-full **:data-[slot=badge]:px-1 @4xl/main:flex">
@@ -416,7 +467,10 @@ export function DataTable({ isDarkMode: isDarkMode, data: initialData }: DataTab
                 <IconChevronDown />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuContent
+              align="end"
+              className="w-56 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border border-emerald-200 dark:border-emerald-800 shadow-lg"
+            >
               {table
                 .getAllColumns()
                 .filter((column) => typeof column.accessorFn !== 'undefined' && column.getCanHide())
@@ -424,7 +478,7 @@ export function DataTable({ isDarkMode: isDarkMode, data: initialData }: DataTab
                   return (
                     <DropdownMenuCheckboxItem
                       key={column.id}
-                      className="capitalize"
+                      className="capitalize text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/80 dark:hover:bg-emerald-800/50"
                       checked={column.getIsVisible()}
                       onCheckedChange={(value) => column.toggleVisibility(!!value)}
                     >
@@ -453,12 +507,16 @@ export function DataTable({ isDarkMode: isDarkMode, data: initialData }: DataTab
             id={sortableId}
           >
             <Table>
-              <TableHeader className="bg-muted sticky top-0 z-10">
+              <TableHeader className="bg-emerald-50/90 dark:bg-emerald-900/90 backdrop-blur-sm sticky top-0 z-10 border-b border-emerald-200/50 dark:border-emerald-800/50">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <TableRow key={headerGroup.id}>
                     {headerGroup.headers.map((header) => {
                       return (
-                        <TableHead key={header.id} colSpan={header.colSpan}>
+                        <TableHead
+                          key={header.id}
+                          colSpan={header.colSpan}
+                          className="text-emerald-900 dark:text-emerald-100 font-semibold"
+                        >
                           {header.isPlaceholder
                             ? null
                             : flexRender(header.column.columnDef.header, header.getContext())}
@@ -505,9 +563,16 @@ export function DataTable({ isDarkMode: isDarkMode, data: initialData }: DataTab
                 <SelectTrigger size="sm" className="w-20" id="rows-per-page">
                   <SelectValue placeholder={table.getState().pagination.pageSize} />
                 </SelectTrigger>
-                <SelectContent side="top">
+                <SelectContent
+                  side="top"
+                  className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border border-emerald-200 dark:border-emerald-800 shadow-lg"
+                >
                   {[10, 20, 30, 40, 50].map((pageSize) => (
-                    <SelectItem key={pageSize} value={`${pageSize}`}>
+                    <SelectItem
+                      key={pageSize}
+                      value={`${pageSize}`}
+                      className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/80 dark:hover:bg-emerald-800/50"
+                    >
                       {pageSize}
                     </SelectItem>
                   ))}
@@ -589,19 +654,26 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
   return (
     <Drawer direction={isMobile ? 'bottom' : 'right'}>
       <DrawerTrigger asChild>
-        <Button variant="link" className="text-foreground w-fit px-0 text-left">
+        <Button
+          variant="link"
+          className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-200 font-semibold tracking-wide transition-all duration-500 ease-in-out w-fit px-0 text-left hover:scale-105 hover:underline decoration-emerald-500/50 dark:decoration-emerald-400/50 underline-offset-4"
+        >
           {item.header}
         </Button>
       </DrawerTrigger>
-      <DrawerContent>
-        <DrawerHeader className="gap-1">
-          <DrawerTitle>{item.header}</DrawerTitle>
-          <DrawerDescription>Showing total visitors for the last 6 months</DrawerDescription>
+      <DrawerContent className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border border-emerald-200/50 dark:border-emerald-800/50">
+        <DrawerHeader className="gap-1 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-emerald-500/10 dark:from-emerald-900/20 dark:via-teal-900/20 dark:to-emerald-900/20">
+          <DrawerTitle className="text-emerald-900 dark:text-emerald-100">
+            {item.header}
+          </DrawerTitle>
+          <DrawerDescription className="text-emerald-700 dark:text-emerald-300">
+            Showing total visitors for the last 6 months
+          </DrawerDescription>
         </DrawerHeader>
         <div className="flex flex-col gap-4 overflow-y-auto px-4 text-sm">
           {!isMobile && (
             <>
-              <ChartContainer>
+              <ChartContainer className="bg-white/50 dark:bg-gray-900/50 rounded-lg p-4 border border-emerald-200/50 dark:border-emerald-800/50">
                 <AreaChart
                   accessibilityLayer
                   data={chartData}
@@ -610,7 +682,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                     right: 10,
                   }}
                 >
-                  <CartesianGrid vertical={false} />
+                  <CartesianGrid vertical={false} stroke="rgba(16, 185, 129, 0.1)" />
                   <XAxis
                     dataKey="month"
                     tickLine={false}
@@ -640,86 +712,197 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                   />
                 </AreaChart>
               </ChartContainer>
-              <Separator />
+              <Separator className="bg-emerald-200/50 dark:bg-emerald-800/50" />
               <div className="grid gap-2">
-                <div className="flex gap-2 leading-none font-medium">
-                  Trending up by 5.2% this month <IconTrendingUp className="size-4" />
+                <div className="flex gap-2 leading-none font-medium text-emerald-900 dark:text-emerald-100">
+                  Trending up by 5.2% this month{' '}
+                  <IconTrendingUp className="size-4 text-emerald-600 dark:text-emerald-400" />
                 </div>
-                <div className="text-muted-foreground">
+                <div className="text-emerald-700 dark:text-emerald-300">
                   Showing total visitors for the last 6 months. This is just some random text to
                   test the layout. It spans multiple lines and should wrap around.
                 </div>
               </div>
-              <Separator />
+              <Separator className="bg-emerald-200/50 dark:bg-emerald-800/50" />
             </>
           )}
           <form className="flex flex-col gap-4">
             <div className="flex flex-col gap-3">
-              <Label htmlFor="header">Header</Label>
-              <Input id="header" defaultValue={item.header} />
+              <Label htmlFor="header" className="text-emerald-900 dark:text-emerald-100">
+                Header
+              </Label>
+              <Input
+                id="header"
+                defaultValue={item.header}
+                className="bg-white/50 dark:bg-gray-900/50 border-emerald-200/50 dark:border-emerald-800/50 text-emerald-900 dark:text-emerald-100 focus:border-emerald-500 dark:focus:border-emerald-500"
+              />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-3">
-                <Label htmlFor="type">Type</Label>
+                <Label htmlFor="type" className="text-emerald-900 dark:text-emerald-100">
+                  Type
+                </Label>
                 <Select defaultValue={item.type}>
-                  <SelectTrigger id="type" className="w-full">
+                  <SelectTrigger
+                    id="type"
+                    className="w-full bg-white/50 dark:bg-gray-900/50 border-emerald-200/50 dark:border-emerald-800/50 text-emerald-900 dark:text-emerald-100"
+                  >
                     <SelectValue placeholder="Select a type" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Table of Contents">Table of Contents</SelectItem>
-                    <SelectItem value="Executive Summary">Executive Summary</SelectItem>
-                    <SelectItem value="Technical Approach">Technical Approach</SelectItem>
-                    <SelectItem value="Design">Design</SelectItem>
-                    <SelectItem value="Capabilities">Capabilities</SelectItem>
-                    <SelectItem value="Focus Documents">Focus Documents</SelectItem>
-                    <SelectItem value="Narrative">Narrative</SelectItem>
-                    <SelectItem value="Cover Page">Cover Page</SelectItem>
+                  <SelectContent className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border border-emerald-200/50 dark:border-emerald-800/50">
+                    <SelectItem
+                      value="Table of Contents"
+                      className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                    >
+                      Table of Contents
+                    </SelectItem>
+                    <SelectItem
+                      value="Executive Summary"
+                      className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                    >
+                      Executive Summary
+                    </SelectItem>
+                    <SelectItem
+                      value="Technical Approach"
+                      className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                    >
+                      Technical Approach
+                    </SelectItem>
+                    <SelectItem
+                      value="Design"
+                      className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                    >
+                      Design
+                    </SelectItem>
+                    <SelectItem
+                      value="Capabilities"
+                      className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                    >
+                      Capabilities
+                    </SelectItem>
+                    <SelectItem
+                      value="Focus Documents"
+                      className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                    >
+                      Focus Documents
+                    </SelectItem>
+                    <SelectItem
+                      value="Narrative"
+                      className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                    >
+                      Narrative
+                    </SelectItem>
+                    <SelectItem
+                      value="Cover Page"
+                      className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                    >
+                      Cover Page
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div className="flex flex-col gap-3">
-                <Label htmlFor="status">Status</Label>
+                <Label htmlFor="status" className="text-emerald-900 dark:text-emerald-100">
+                  Status
+                </Label>
                 <Select defaultValue={item.status}>
-                  <SelectTrigger id="status" className="w-full">
+                  <SelectTrigger
+                    id="status"
+                    className="w-full bg-white/50 dark:bg-gray-900/50 border-emerald-200/50 dark:border-emerald-800/50 text-emerald-900 dark:text-emerald-100"
+                  >
                     <SelectValue placeholder="Select a status" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Done">Done</SelectItem>
-                    <SelectItem value="In Progress">In Progress</SelectItem>
-                    <SelectItem value="Not Started">Not Started</SelectItem>
+                  <SelectContent className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border border-emerald-200/50 dark:border-emerald-800/50">
+                    <SelectItem
+                      value="Done"
+                      className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                    >
+                      Done
+                    </SelectItem>
+                    <SelectItem
+                      value="In Progress"
+                      className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                    >
+                      In Progress
+                    </SelectItem>
+                    <SelectItem
+                      value="Not Started"
+                      className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                    >
+                      Not Started
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-3">
-                <Label htmlFor="target">Target</Label>
-                <Input id="target" defaultValue={item.target} />
+                <Label htmlFor="target" className="text-emerald-900 dark:text-emerald-100">
+                  Target
+                </Label>
+                <Input
+                  id="target"
+                  defaultValue={item.target}
+                  className="bg-white/50 dark:bg-gray-900/50 border-emerald-200/50 dark:border-emerald-800/50 text-emerald-900 dark:text-emerald-100 focus:border-emerald-500 dark:focus:border-emerald-500"
+                />
               </div>
               <div className="flex flex-col gap-3">
-                <Label htmlFor="limit">Limit</Label>
-                <Input id="limit" defaultValue={item.limit} />
+                <Label htmlFor="limit" className="text-emerald-900 dark:text-emerald-100">
+                  Limit
+                </Label>
+                <Input
+                  id="limit"
+                  defaultValue={item.limit}
+                  className="bg-white/50 dark:bg-gray-900/50 border-emerald-200/50 dark:border-emerald-800/50 text-emerald-900 dark:text-emerald-100 focus:border-emerald-500 dark:focus:border-emerald-500"
+                />
               </div>
             </div>
             <div className="flex flex-col gap-3">
-              <Label htmlFor="reviewer">Reviewer</Label>
+              <Label htmlFor="reviewer" className="text-emerald-900 dark:text-emerald-100">
+                Reviewer
+              </Label>
               <Select defaultValue={item.reviewer}>
-                <SelectTrigger id="reviewer" className="w-full">
+                <SelectTrigger
+                  id="reviewer"
+                  className="w-full bg-white/50 dark:bg-gray-900/50 border-emerald-200/50 dark:border-emerald-800/50 text-emerald-900 dark:text-emerald-100"
+                >
                   <SelectValue placeholder="Select a reviewer" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
-                  <SelectItem value="Jamik Tashpulatov">Jamik Tashpulatov</SelectItem>
-                  <SelectItem value="Emily Whalen">Emily Whalen</SelectItem>
+                <SelectContent className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border border-emerald-200/50 dark:border-emerald-800/50">
+                  <SelectItem
+                    value="Eddie Lake"
+                    className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                  >
+                    Eddie Lake
+                  </SelectItem>
+                  <SelectItem
+                    value="Jamik Tashpulatov"
+                    className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                  >
+                    Jamik Tashpulatov
+                  </SelectItem>
+                  <SelectItem
+                    value="Emily Whalen"
+                    className="text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30"
+                  >
+                    Emily Whalen
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>
           </form>
         </div>
-        <DrawerFooter>
-          <Button>Submit</Button>
+        <DrawerFooter className="bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-emerald-500/10 dark:from-emerald-900/20 dark:via-teal-900/20 dark:to-emerald-900/20">
+          <Button className="bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-700 dark:hover:bg-emerald-600 text-white transition-colors duration-300">
+            Submit
+          </Button>
           <DrawerClose asChild>
-            <Button variant="outline">Done</Button>
+            <Button
+              variant="outline"
+              className="border-emerald-200/50 dark:border-emerald-800/50 text-emerald-900 dark:text-emerald-100 hover:bg-emerald-100/50 dark:hover:bg-emerald-800/30 transition-colors duration-300"
+            >
+              Done
+            </Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
