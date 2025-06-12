@@ -6,19 +6,18 @@ interface CTASectionProps {
   isDarkMode: boolean;
 }
 
+
 const CTASection: React.FC<CTASectionProps> = ({ isDarkMode }) => {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 text-center bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl mx-auto max-w-7xl mb-12">
       <h2
-        className={`text-4xl font-bold mb-6 ${
-          isDarkMode ? "text-gray-100" : "text-gray-800"
-        } bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent`}
+        className={`text-4xl font-bold mb-6 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent`}
       >
         Take Action Today
       </h2>
       <p
         className={`text-lg mb-8 max-w-2xl mx-auto ${
-          isDarkMode ? "text-gray-300" : "text-gray-600"
+          isDarkMode ? "text-black" : "text-gray-600"
         }`}
       >
         Join thousands of others in reducing your carbon footprint. Start your
