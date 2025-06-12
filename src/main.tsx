@@ -5,7 +5,7 @@ import { lazy, Suspense } from "react";
 
 import GreenFootprintLanding from "./pages/Eco/GreenFootprintLanding";
 import Blog from "./pages/Blog/Blog";
-import Community from "./pages/Support/Community"; 
+import Community from "./pages/Support/Community";
 import AIAnalytic from "./pages/API/AIAnalytic";
 import PersonalReports from "./pages/Support/PersonalReports"; 
 import CarbonFootprintCalculator from "./pages/Carbon/CarbonFootprintCalculator";
@@ -23,6 +23,7 @@ import Contact from "./pages/Info/Contact";
 import HelpCenter from "./pages/Support/HelpCenter";
 import Privacy from "./pages/Support/Privacy";
 import { Marketplace } from "./pages/Info/Marketplace";
+import FeaturePage from "./pages/Feature/FeaturePage";
 
 // Lazy loaded components
 const BlogPostDetail = lazy(() => import("./pages/Blog/BlogPostDetail"));
@@ -74,6 +75,8 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/help-center" element={<HelpCenter />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/marketplace" element={<Marketplace />} />
+            <Route path="/features" element={<FeaturePage />} />
+
           </Routes>
         </Suspense>
       </BrowserRouter>

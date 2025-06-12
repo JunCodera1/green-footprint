@@ -25,9 +25,8 @@ const Blog = React.lazy(() => import("./pages/Blog/Blog"));
 const BlogPostDetail = React.lazy(() => import("./pages/Blog/BlogPostDetail"));
 const SignUpPage = React.lazy(() => import("./pages/Auth/SignUpPage"));
 const LoginPage = React.lazy(() => import("./pages/Auth/LoginPage"));
-const ForgotPassword = React.lazy(
-  () => import("./pages/Auth/ForgotPassword")
-);
+const ForgotPassword = React.lazy(() => import("./pages/Auth/ForgotPassword"));
+
 const About = React.lazy(() => import("./pages/Info/AboutUs"));
 const Contact = React.lazy(() => import("./pages/Info/Contact"));
 
