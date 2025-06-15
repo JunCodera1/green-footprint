@@ -4,6 +4,7 @@ import type { LucideIcon } from 'lucide-react';
 import { IconCirclePlusFilled } from '@tabler/icons-react';
 
 import { SidebarContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar';
+import { useNavigate } from 'react-router-dom';
 
 interface NavMainProps {
   items: {
@@ -46,6 +47,10 @@ export function NavMain({
         </SidebarMenu>
         <SidebarMenu>
           {items.map((item) => {
+            const navigate = useNavigate();
+            const handleClick = () => {
+              navigate(item.url);
+            };
             const Icon = item.icon;
             return (
               <SidebarMenuItem
@@ -56,7 +61,7 @@ export function NavMain({
                     : 'text-emerald-700 hover:bg-blue-200'
                 }`}
               >
-                <SidebarMenuButton>
+                <SidebarMenuButton onClick={handleClick}>
                   <Icon className={`${isDarkMode ? 'text-emerald-400 ' : 'text-emerald-700'}`} />
                   <span className={`${isDarkMode ? 'text-emerald-400' : 'text-emerald-700'}`}>
                     {item.title}

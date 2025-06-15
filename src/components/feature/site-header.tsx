@@ -21,13 +21,9 @@ export function SiteHeader({
         isDarkMode ? 'bg-gray-800 border-white' : 'bg-white'
       }`}
     >
-      <Button
-        variant="ghost"
-        size="icon"
-        className="lg:hidden"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      >
+      <Button size="icon" className="hover:bg-blue-300" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <IconMenu2 className="h-5 w-5 text-emerald-700" />
+
         <span className="sr-only">Toggle menu</span>
       </Button>
       <div className="flex-1">
