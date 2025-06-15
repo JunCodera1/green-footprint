@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import { Button } from '../../components/ui/button';
 import Navigation from '../../components/mainCompo/Navigation';
 import Footer from '../../components/mainCompo/Footer';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { Link } from 'lucide-react';
 
 export default function NotFound() {
   const [isDarkMode, setIsDarkMode] = useState(false);
