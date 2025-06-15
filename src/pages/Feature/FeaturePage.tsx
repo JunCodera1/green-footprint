@@ -11,7 +11,7 @@ import data from './data.json';
 import { useDarkMode } from '../../hooks/useDarkMode';
 
 export default function Page() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
@@ -24,9 +24,11 @@ export default function Page() {
       }
       className="flex h-screen overflow-hidden"
     >
-      <div className="sticky top-0 h-screen shrink-0">
-        <AppSidebar isDarkMode={isDarkMode} />
-      </div>
+      {isMenuOpen && (
+        <div className="sticky top-0 h-screen shrink-0">
+          <AppSidebar isDarkMode={isDarkMode} />
+        </div>
+      )}
       <div className="flex flex-col flex-1 overflow-y-auto">
         <SidebarInset isDarkMode={isDarkMode}>
           <SiteHeader
