@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
 import { DarkModeProvider } from './contexts/DarkModeContext';
+import NotFound from './pages/404/404NotFound';
 
 // Lazy loaded components
 const BlogPostDetail = lazy(() => import('./pages/Blog/BlogPostDetail'));
@@ -73,6 +74,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/features" element={<FeaturePage />} />
+            <Route path="/404-not-found" element={<NotFound />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

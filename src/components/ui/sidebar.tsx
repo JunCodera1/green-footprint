@@ -88,7 +88,11 @@ interface SidebarInsetProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const SidebarInset = React.forwardRef<HTMLDivElement, SidebarInsetProps>(
   ({ isDarkMode, className, children, ...rest }, ref) => (
-    <div ref={ref} className={cn('flex flex-1 flex-col bg-white', className)} {...rest}>
+    <div
+      ref={ref}
+      className={cn('flex flex-1 flex-col', isDarkMode ? 'bg-gray-900' : 'bg-white', className)}
+      {...rest}
+    >
       {children}
     </div>
   )
