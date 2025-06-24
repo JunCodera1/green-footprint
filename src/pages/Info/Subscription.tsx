@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import type { SubscriptionPlan, Testimonial } from '../../types/subscription';
 import { PricingCard } from '../../components/subscription/PricingCard';
 import { TestimonialCard } from '../../components/subscription/TestimonialCard';
+import Footer from '../../components/mainCompo/Footer';
+import { ArrowLeft } from 'lucide-react';
+import { Button } from '../../components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const mockPlans: SubscriptionPlan[] = [
   {
@@ -141,6 +145,7 @@ const mockTestimonials: Testimonial[] = [
 
 export const Subscription: React.FC = () => {
   const [selectedPeriod, setSelectedPeriod] = useState<'monthly' | 'yearly'>('monthly');
+  const navigate = useNavigate();
 
   const handleSelectPlan = (plan: SubscriptionPlan) => {
     // Handle plan selection (e.g., redirect to checkout)
@@ -148,9 +153,15 @@ export const Subscription: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="mx-auto">
+      <Button
+        onClick={() => navigate('/')}
+        className="fixed top-6 left-6 z-50 bg-white text-black hover:bg-gray-200 shadow-md"
+      >
+        <ArrowLeft className="mr-2" /> Back
+      </Button>
       <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Choose Your Green Impact Plan</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-4 pt-15">Choose Your Green Impact Plan</h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
           Join thousands of environmentally conscious individuals and organizations making a
           difference
@@ -212,6 +223,7 @@ export const Subscription: React.FC = () => {
           we'll refund your payment in full. No questions asked.
         </p>
       </div>
+      <Footer isDarkMode={false}></Footer>
     </div>
   );
 };

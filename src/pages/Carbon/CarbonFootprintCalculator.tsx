@@ -21,6 +21,7 @@ import {
   Download,
   Share2,
   RefreshCw,
+  ArrowLeft,
 } from "lucide-react";
 import {
   PieChart,
@@ -38,6 +39,8 @@ import {
 } from "recharts";
 import { useDarkMode } from "../../hooks/useDarkMode";
 import type { Results, FormData } from "../../types/foot-print-calculator";
+import { Button } from "../../components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const CarbonFootprintCalculator: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -100,6 +103,8 @@ const CarbonFootprintCalculator: React.FC = () => {
       description: "Your shopping patterns",
     },
   ];
+
+  const navigate = useNavigate();
 
   // Animate cards on results page
   useEffect(() => {
@@ -285,7 +290,6 @@ const CarbonFootprintCalculator: React.FC = () => {
         { month: "Dec", emissions: results.total / 12 },
       ]
     : [];
-
   if (isCalculating) {
     return (
       <div className="max-w-4xl mx-auto p-6 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 min-h-screen flex items-center justify-center">
@@ -329,7 +333,7 @@ const CarbonFootprintCalculator: React.FC = () => {
               Carbon Footprint Report
             </span>
           </div>
-          <h1 className="text-5xl font-bold text-gray-800 mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold text-gray-800 mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text">
             Your Environmental Impact
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -710,8 +714,8 @@ const CarbonFootprintCalculator: React.FC = () => {
 
   return (
     
-    <div className="max-w-5xl mx-auto p-6 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 min-h-screen">
-
+    <div className=" mx-auto p-6 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 min-h-screen">
+      <Button className='bg-white text-black hover:bg-gray-300' onClick={() => navigate("/")}><ArrowLeft /></Button>
       {/* Header */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg mb-6">
@@ -720,7 +724,7 @@ const CarbonFootprintCalculator: React.FC = () => {
             Carbon Footprint Calculator
           </span>
         </div>
-        <h1 className="text-5xl font-bold text-gray-800 mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+        <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
           Measure Your Environmental Impact
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -809,7 +813,7 @@ const CarbonFootprintCalculator: React.FC = () => {
               <div
                 className={`p-6 rounded-2xl border-2 ${steps[0].borderColor} ${steps[0].bgColor}`}
               >
-                <label className="block text-lg font-semibold text-gray-700 mb-4 flex items-center gap-2">
+                <label className="block text-lg font-semibold text-gray-700 mb-4 items-center gap-2">
                   <Car className="w-5 h-5" />
                   Annual Car Miles
                 </label>
@@ -851,7 +855,7 @@ const CarbonFootprintCalculator: React.FC = () => {
               <div
                 className={`p-6 rounded-2xl border-2 ${steps[0].borderColor} ${steps[0].bgColor}`}
               >
-                <label className="block text-lg font-semibold text-gray-700 mb-4 flex items-center gap-2">
+                <label className="text-lg font-semibold text-gray-700 mb-4 flex items-center gap-2">
                   <Zap className="w-5 h-5" />
                   Public Transport Miles/Year
                 </label>
@@ -899,7 +903,7 @@ const CarbonFootprintCalculator: React.FC = () => {
               <div
                 className={`p-6 rounded-2xl border-2 ${steps[1].borderColor} ${steps[1].bgColor}`}
               >
-                <label className="block text-lg font-semibold text-gray-700 mb-4 flex items-center gap-2">
+                <label className="text-lg font-semibold text-gray-700 mb-4 flex items-center gap-2">
                   <Zap className="w-5 h-5" />
                   Monthly Electricity (kWh)
                 </label>
