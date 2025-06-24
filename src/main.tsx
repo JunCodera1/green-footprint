@@ -33,6 +33,7 @@ const HelpCenter = lazy(() => import('./pages/Support/HelpCenter'));
 const Privacy = lazy(() => import('./pages/Support/Privacy'));
 const Marketplace = lazy(() => import('./pages/Info/Marketplace'));
 const FeaturePage = lazy(() => import('./pages/Feature/FeaturePage'));
+const WatchDemo = lazy(() => import('./pages/Info/WatchDemo'))
 
 // Loading component for Suspense
 const LoadingFallback = () => (
@@ -74,6 +75,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/features" element={<FeaturePage />} />
+            <Route path="/watch-demo" element={<WatchDemo/>}/>
             <Route path="/404-not-found" element={<NotFound />} />
           </Routes>
         </Suspense>
