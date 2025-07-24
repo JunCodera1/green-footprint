@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { QuizCard } from '../../components/education/QuizCard';
 import type { Quiz, Tutorial, Webinar, Certification } from '../../types/education';
-import { BookOpen, Video, Calendar, Award, Search, Filter, ChevronRight } from 'lucide-react';
+import { BookOpen, Video, Calendar, Award, Search, Filter, ChevronRight, ArrowLeft } from 'lucide-react';
+import { Button } from '../../components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 interface EducationPageProps {
   isDarkMode?: boolean;
@@ -42,8 +44,16 @@ export const EducationPage: React.FC<EducationPageProps> = ({ isDarkMode = false
     console.log('Starting certification:', certificationId);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="container mx-auto px-4 py-8">
+      <Button
+        onClick={() => navigate('/')}
+        className=" bg-white text-black"
+      >
+        <ArrowLeft className="mr-2" /> Back
+      </Button>
       {/* Header */}
       <div className="mb-8">
         <h1 className={`text-3xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>

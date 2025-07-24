@@ -1,8 +1,8 @@
-import { ArrowLeft, ArrowRight, Award, CheckCircle, Leaf, Star, Target, Users } from "lucide-react";
-import { useState } from "react";
-import WatchDemoButton from "../../components/WatchDemoButton";
-import { Button } from "../../components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { ArrowLeft, ArrowRight, Award, CheckCircle, Leaf, Star, Target, Users } from 'lucide-react';
+import { useState } from 'react';
+import WatchDemoButton from '../../components/WatchDemoButton';
+import { Button } from '../../components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const WatchDemoPage = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -10,72 +10,75 @@ const WatchDemoPage = () => {
   const features = [
     {
       icon: <Leaf className="text-green-600" size={24} />,
-      title: "Carbon Footprint Tracker",
-      description: "Track your daily carbon emissions and get personalized improvement suggestions"
+      title: 'Carbon Footprint Tracker',
+      description: 'Track your daily carbon emissions and get personalized improvement suggestions',
     },
     {
       icon: <Target className="text-blue-600" size={24} />,
-      title: "Smart Goals",
-      description: "Set sustainable goals and track your progress with intelligent insights"
+      title: 'Smart Goals',
+      description: 'Set sustainable goals and track your progress with intelligent insights',
     },
     {
       icon: <Users className="text-purple-600" size={24} />,
-      title: "Community Impact",
-      description: "Connect with like-minded people and participate in green challenges"
+      title: 'Community Impact',
+      description: 'Connect with like-minded people and participate in green challenges',
     },
     {
       icon: <Award className="text-orange-600" size={24} />,
-      title: "Green Rewards",
-      description: "Earn rewards and recognition for achieving your sustainability milestones"
-    }
+      title: 'Green Rewards',
+      description: 'Earn rewards and recognition for achieving your sustainability milestones',
+    },
   ];
 
   const stats = [
-    { number: "50K+", label: "Active Users" },
-    { number: "1M+", label: "Kg CO2 Reduced" },
-    { number: "95%", label: "Satisfaction Rate" },
-    { number: "200+", label: "Cities Worldwide" }
+    { number: '50K+', label: 'Active Users' },
+    { number: '1M+', label: 'Kg CO2 Reduced' },
+    { number: '95%', label: 'Satisfaction Rate' },
+    { number: '200+', label: 'Cities Worldwide' },
   ];
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "Environmental Consultant",
-      content: "GreenFootprint has transformed how I approach sustainable living. The interface is intuitive and the insights are actionable.",
-      rating: 5
+      name: 'Sarah Johnson',
+      role: 'Environmental Consultant',
+      content:
+        'GreenFootprint has transformed how I approach sustainable living. The interface is intuitive and the insights are actionable.',
+      rating: 5,
     },
     {
-      name: "Michael Chen",
-      role: "University Student",
-      content: "Amazing app for tracking environmental impact. I've reduced my carbon footprint by 30% in just 3 months!",
-      rating: 5
+      name: 'Michael Chen',
+      role: 'University Student',
+      content:
+        "Amazing app for tracking environmental impact. I've reduced my carbon footprint by 30% in just 3 months!",
+      rating: 5,
     },
     {
-      name: "Emma Davis",
-      role: "Marketing Manager",
-      content: "The community features keep me motivated. It's great to see how my actions contribute to a larger movement.",
-      rating: 5
-    }
+      name: 'Emma Davis',
+      role: 'Marketing Manager',
+      content:
+        "The community features keep me motivated. It's great to see how my actions contribute to a larger movement.",
+      rating: 5,
+    },
   ];
 
   const benefits = [
-    "Real-time carbon footprint tracking",
-    "Personalized sustainability recommendations",
-    "Community challenges and competitions",
-    "Progress analytics and insights",
-    "Integration with smart home devices",
-    "Offline mode for data collection"
+    'Real-time carbon footprint tracking',
+    'Personalized sustainability recommendations',
+    'Community challenges and competitions',
+    'Progress analytics and insights',
+    'Integration with smart home devices',
+    'Offline mode for data collection',
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
       {/* Hero Section */}
-              <Button 
-    onClick={() => navigate("/")} 
-    className="fixed top-6 left-6 z-50 bg-white text-black hover:bg-gray-200 shadow-md"
-  >
-    <ArrowLeft className="mr-2" /> Back
-  </Button>
+      <Button
+        onClick={() => navigate('/')}
+        className="fixed top-6 left-6 z-50 bg-white text-black hover:bg-gray-200 shadow-md"
+      >
+        <ArrowLeft className="mr-2" /> Back
+      </Button>
 
       <div className="relative bg-gradient-to-r from-green-600 to-emerald-700">
         <div className="absolute inset-0 bg-black/10"></div>
@@ -90,8 +93,8 @@ const WatchDemoPage = () => {
               Meet <span className="text-green-200">GreenFootprint</span>
             </h1>
             <p className="text-xl text-green-100 mb-8 max-w-3xl mx-auto">
-              The most comprehensive platform for tracking, managing, and reducing your environmental impact. 
-              Join the sustainability revolution today.
+              The most comprehensive platform for tracking, managing, and reducing your
+              environmental impact. Join the sustainability revolution today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <WatchDemoButton />
@@ -112,9 +115,7 @@ const WatchDemoPage = () => {
                 <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">
                   {stat.number}
                 </div>
-                <div className="text-gray-600 font-medium">
-                  {stat.label}
-                </div>
+                <div className="text-gray-600 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -132,19 +133,16 @@ const WatchDemoPage = () => {
               Everything you need to monitor, understand, and reduce your environmental impact
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
-                <div className="p-3 bg-gray-50 rounded-full w-fit mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600">
-                  {feature.description}
-                </p>
+              <div
+                key={index}
+                className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105"
+              >
+                <div className="p-3 bg-gray-50 rounded-full w-fit mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -159,7 +157,7 @@ const WatchDemoPage = () => {
               Explore GreenFootprint in Detail
             </h2>
           </div>
-          
+
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {['overview', 'features', 'benefits'].map((tab) => (
               <button
@@ -184,9 +182,9 @@ const WatchDemoPage = () => {
                     Transform Your Environmental Impact
                   </h3>
                   <p className="text-gray-600 mb-6">
-                    GreenFootprint combines cutting-edge technology with behavioral science to help you 
-                    make meaningful changes in your daily life. Our platform tracks over 50 different 
-                    environmental metrics and provides actionable insights.
+                    GreenFootprint combines cutting-edge technology with behavioral science to help
+                    you make meaningful changes in your daily life. Our platform tracks over 50
+                    different environmental metrics and provides actionable insights.
                   </p>
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
@@ -208,9 +206,7 @@ const WatchDemoPage = () => {
                   <h4 className="text-xl font-semibold text-gray-900 mb-2">
                     Ready to Get Started?
                   </h4>
-                  <p className="text-gray-600 mb-6">
-                    Join thousands of users making a difference
-                  </p>
+                  <p className="text-gray-600 mb-6">Join thousands of users making a difference</p>
                   <WatchDemoButton />
                 </div>
               </div>
@@ -225,12 +221,8 @@ const WatchDemoPage = () => {
                   {features.map((feature, index) => (
                     <div key={index} className="p-6 bg-gray-50 rounded-xl">
                       <div className="mb-4">{feature.icon}</div>
-                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                        {feature.title}
-                      </h4>
-                      <p className="text-gray-600 text-sm">
-                        {feature.description}
-                      </p>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h4>
+                      <p className="text-gray-600 text-sm">{feature.description}</p>
                     </div>
                   ))}
                 </div>
@@ -244,9 +236,7 @@ const WatchDemoPage = () => {
                 </h3>
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
-                    <h4 className="text-xl font-semibold text-gray-900 mb-4">
-                      Key Benefits
-                    </h4>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-4">Key Benefits</h4>
                     <div className="space-y-3">
                       {benefits.map((benefit, index) => (
                         <div key={index} className="flex items-center gap-3">
@@ -257,9 +247,7 @@ const WatchDemoPage = () => {
                     </div>
                   </div>
                   <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6">
-                    <h4 className="text-xl font-semibold text-gray-900 mb-4">
-                      Impact Measurement
-                    </h4>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-4">Impact Measurement</h4>
                     <div className="space-y-4">
                       <div className="flex justify-between items-center">
                         <span className="text-gray-700">Carbon Reduction</span>
@@ -293,7 +281,7 @@ const WatchDemoPage = () => {
               Join thousands of satisfied users making a real difference
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-white p-6 rounded-2xl shadow-lg">
@@ -302,16 +290,10 @@ const WatchDemoPage = () => {
                     <Star key={i} className="text-yellow-400 fill-current" size={18} />
                   ))}
                 </div>
-                <p className="text-gray-700 mb-6 italic">
-                  "{testimonial.content}"
-                </p>
+                <p className="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
                 <div>
-                  <div className="font-semibold text-gray-900">
-                    {testimonial.name}
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    {testimonial.role}
-                  </div>
+                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                  <div className="text-sm text-gray-600">{testimonial.role}</div>
                 </div>
               </div>
             ))}

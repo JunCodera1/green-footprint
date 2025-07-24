@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { SocialProfileCard } from '../../components/social/SocialProfile';
 import type { SocialProfile, SocialPost, Team } from '../../types/social';
-import { Users, Share2, MessageCircle, UserPlus, Filter, Search } from 'lucide-react';
+import { Users, Share2, MessageCircle, UserPlus, Filter, Search, ArrowLeft } from 'lucide-react';
+import { Button } from '../../components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 interface SocialPageProps {
   isDarkMode?: boolean;
@@ -33,8 +35,16 @@ export const SocialPage: React.FC<SocialPageProps> = ({ isDarkMode = false }) =>
     console.log('Connecting with user:', userId);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="container mx-auto px-4 py-8">
+      <Button
+        onClick={() => navigate('/')}
+        className=" bg-white text-black"
+      >
+        <ArrowLeft className="mr-2" /> Back
+      </Button>
       {/* Header */}
       <div className="mb-8">
         <h1 className={`text-3xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
